@@ -88,14 +88,10 @@
               class="home-image"
             />
             <div id="button-container" class="home-container02">
-              <button type="button" class="home-button button">Log in</button>
-              <button type="button" class="home-button1 button">
-                <span>
-                  <span>Sign in</span>
-                  <br />
-                </span>
-              </button>
+                <a href="{{ url_for('login') }}" class="home-button button">Log in</a>
+                <a href="{{ url_for('signin') }}" class="home-button1 button">Sign in</a>
             </div>
+
           </div>
           <div id="righ-side-nav" class="home-container03">
             <div class="home-container04">
