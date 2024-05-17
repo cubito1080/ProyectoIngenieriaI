@@ -4,7 +4,7 @@ from pyControllers.signin import signin
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
-# nombre en html , nombre metodo, nombre del archivo
+# nombre en html ,  nombre del archivo, nombre del metodo
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
 app.add_url_rule('/signin', 'signin', signin, methods=['GET', 'POST'])
 

@@ -8,25 +8,99 @@
     <meta property="twitter:card" content="summary_large_image" />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
     <style data-tag="default-style-sheet">
       html {
-          font-family: Inter, sans-serif;
+        font-family: Inter, sans-serif;
         font-size: 16px;
       }
 
       body {
         font-weight: 400;
-        font-style:normal;
+        font-style: normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         line-height: 1.15;
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
-
-
       }
     </style>
     <link
@@ -80,9 +154,9 @@
     />
     <div>
       <link
-      href="{{ url_for('static', filename='css/indexLoginContratista.css') }}"
-      rel="stylesheet"
-    />
+        href="{{ url_for('static', filename='css/indexLoginContratista.css') }}"
+        rel="stylesheet"
+      />
 
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
@@ -119,92 +193,101 @@
               Bienvenido a nuestra comunidad, por favor ingrese sus datos.
             </span>
             <div class="home-container06">
-              <div id="email_container" class="home-container07">
-                <label id="email_label" for="email_input" class="home-text12">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email_input"
-                  placeholder="example@gmail.com"
-                  class="home-textinput input"
-                />
-              </div>
-              <div id="name_container" class="home-container08">
-                <label id="name_label" for="nombre_input" class="home-text13">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  id="nombre_input"
-                  class="home-textinput1 input"
-                />
-              </div>
-              <div id="password_container" class="home-container09">
-                <label
-                  id="password_label"
-                  for="password_input"
-                  class="home-text14"
-                >
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  id="password_input"
-                  placeholder="*********"
-                  class="home-textinput2 input"
-                />
-              </div>
-              <div id="apellido_container" class="home-container10">
-                <label
-                  id="apellido_label"
-                  for="apellido_input"
-                  class="home-text15"
-                >
-                  Apellido
-                </label>
-                <input
-                  type="text"
-                  id="apellido_input"
-                  class="home-textinput3 input"
-                />
-              </div>
+              <form method="POST" class="home-container06">
+                <div id="email_container" class="home-container07">
+                  <label id="email_label" for="email_input" class="home-text12"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email_input"
+                    placeholder="example@gmail.com"
+                    class="home-textinput input"
+                    name="email"
+                    value="{{ request.form.email if request.form.email else '' }}"
+                  />
+                </div>
+                <div id="name_container" class="home-container08">
+                  <label id="name_label" for="nombre_input" class="home-text13"
+                    >Nombre</label
+                  >
+                  <input
+                    type="text"
+                    id="nombre_input"
+                    class="home-textinput1 input"
+                    name="nombre"
+                    value="{{ request.form.nombre if request.form.nombre else '' }}"
+                  />
+                </div>
+                <div id="password_container" class="home-container09">
+                  <label
+                    id="password_label"
+                    for="password_input"
+                    class="home-text14"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="password_input"
+                    placeholder="*********"
+                    class="home-textinput2 input"
+                    name="password"
+                    value="{{ request.form.password if request.form.password else '' }}"
+                  />
+                </div>
+                <div id="apellido_container" class="home-container10">
+                  <label
+                    id="apellido_label"
+                    for="apellido_input"
+                    class="home-text15"
+                    >Apellido</label
+                  >
+                  <input
+                    type="text"
+                    id="apellido_input"
+                    class="home-textinput3 input"
+                    name="apellido"
+                    value="{{ request.form.apellido if request.form.apellido else '' }}"
+                  />
+                </div>
+                <div id="cedula_container" class="home-container11">
+                  <label
+                    id="cedula_label"
+                    class="home-text16"
+                    for="cedula_input"
+                    >Cédula</label
+                  >
+                  <input
+                    type="text"
+                    id="cedula_input"
+                    class="home-textinput4 input"
+                    name="cedula"
+                    value="{{ request.form.cedula if request.form.cedula else '' }}"
+                  />
+                </div>
+                <div id="telefonoo_container" class="home-container12">
+                  <label
+                    id="telefono_label"
+                    for="telefono_input"
+                    class="home-text17"
+                    >Teléfono</label
+                  >
+                  <input
+                    type="number"
+                    id="telefono_input"
+                    class="home-textinput5 input"
+                    name="telefono"
+                    value="{{ request.form.telefono if request.form.telefono else '' }}"
+                  />
+                </div>
 
-              <div id="cedula_container" class="home-container11">
-                <label id="cedula_label" class="home-text16" for="cedula_input">Cédula</label>
-                <input
-                  type="text"
-                  id="cedula_input"
-                  class="home-textinput4 input"
-                />
-              </div>
-
-              <div id="telefonoo_container" class="home-container12">
-                <label
-                  id="telefono_label"
-                  for="telefono_input"
-                  class="home-text17"
-                >
-                  <span>Teléfono</span>
-                  <br />
-                </label>
-                <input
-                  type="number"
-                  id="telefono_input"
-                  class="home-textinput5 input"
-                />
-              </div>
-
-
-            </div>
-            <div class="home-container13">
-              <button type="button" class="home-button button">Volver</button>
-              <button type="button" class="home-button1 button">
-                <span class="home-text20">
-                  <span class="home-text21">Registrarse</span>
-                  <br />
-                </span>
-              </button>
+                <div class="home-container13">
+                  <button type="submit" class="home-button1 button">
+                    Registrarse
+                  </button>
+                  <a href="{{ url_for('home') }}" class="home-button button">Volver</a>
+                </div>
+              </form>
             </div>
           </div>
           <div class="home-container14">
