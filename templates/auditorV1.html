@@ -172,20 +172,8 @@
               </div>
             </div>
             <div class="home-container11">
-              <button
-                type="button"
-                id="nuevoContrato"
-                class="home-button button"
-              >
-                Nuevo contrato
-              </button>
-              <button
-                type="button"
-                id="misContratosButton"
-                class="home-button1 button"
-              >
-                <span id="verContratos" class="home-text19">Ver contratos</span>
-              </button>
+                <a href="{{ url_for('auditor.auditorV4') }}" id="nuevoContrato" class="home-button button">Nuevo contrato</a>
+                <a href="{{ url_for('auditor.auditorV2') }}" id="misContratosButton" class="home-button1 button">Ver contratos</a>
             </div>
           </div>
         </div>

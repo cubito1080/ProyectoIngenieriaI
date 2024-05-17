@@ -8,24 +8,99 @@
     <meta property="twitter:card" content="summary_large_image" />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
     <style data-tag="default-style-sheet">
       html {
-          font-family: Inter, serif;
+        font-family: Inter, serif;
         font-size: 16px;
       }
 
       body {
         font-weight: 400;
-        font-style:normal;
+        font-style: normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         line-height: 1.15;
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
-
       }
     </style>
     <link
@@ -109,9 +184,9 @@
     />
     <div>
       <link
-      href="{{ url_for('static', filename='css/constatista_sign_in_index.css') }}"
-      rel="stylesheet"
-    />
+        href="{{ url_for('static', filename='css/constatista_sign_in_index.css') }}"
+        rel="stylesheet"
+      />
 
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
@@ -192,44 +267,36 @@
           </div>
           <div id="right_content" class="home-rightsidecontent">
             <div id="login_section" class="home-righside">
-              <div id="mail_section" class="home-container5">
-                <label id="email_label" for="email_input">Email</label>
-                <input
-                  type="text"
-                  id="email_input"
-                  class="home-emailinputsection input"
-                />
-              </div>
-              <div id="password_section" class="home-container6">
-                <label id="password_label" for="password_input">Clave</label>
-                <input
-                  type="text"
-                  id="password_input"
-                  class="home-passwordinputsection input"
-                />
-              </div>
-              <div id="buttons_div_container" class="home-buttonsdivcontainer">
-                <button
-                  type="button"
-                  id="register_button"
-                  class="home-button button"
+              <form method="POST" class="home-container06">
+                <div id="mail_section" class="home-container5">
+                  <label id="email_label" for="email_input">Email</label>
+                  <input
+                    type="text"
+                    id="email_input"
+                    class="home-emailinputsection input"
+                    name="email"
+                    value="{{ request.form.email if request.form.email else '' }}"
+                  />
+                </div>
+                <div id="password_section" class="home-container6">
+                  <label id="password_label" for="password_input">Clave</label>
+                  <input
+                    type="password"
+                    id="password_input"
+                    class="home-passwordinputsection input"
+                    name="password"
+                    value="{{ request.form.password if request.form.password else '' }}"
+                  />
+                </div>
+                <div
+                  id="buttons_div_container"
+                  class="home-buttonsdivcontainer"
                 >
-                  <span>
-                    <span>Register</span>
-                    <br />
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  id="sign_in_button"
-                  class="home-button1 button"
-                >
-                  <span>
-                    <span>Sign in</span>
-                    <br />
-                  </span>
-                </button>
-              </div>
+                  <a href="{{ url_for('login') }}" id="register_button" class="home-button button">Register</a>
+                  <button type="submit" id="sign_in_button" class="home-button1 button">Sign in</button>
+
+                </div>
+              </form>
             </div>
           </div>
         </div>

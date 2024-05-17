@@ -6,7 +6,13 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
 def signin():
     if request.method == 'POST':
-        pass
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Handle form submission here
+        # SEGUN EL TIPO DE USUARIO, EL RENDER SERA DE CONTRATISTA V1 O AUDITOR V1
+
+
     if request.method == 'GET':
         return render_template('signIn.html')
 
