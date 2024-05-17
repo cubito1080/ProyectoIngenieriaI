@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def viaje():
-    return render_template('sign_in_contratista.html')
+    return render_template('loginContratista.html')
 
 
 if __name__ == '__main__':
