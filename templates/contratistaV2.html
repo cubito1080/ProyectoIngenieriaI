@@ -75,26 +75,26 @@
   </head>
   <body>
     <link
-      href="{{ url_for('static', filename='css/styleAuditorV1.css') }}"
+      href="{{ url_for('static', filename='css/styleContratistaV2.css') }}"
       rel="stylesheet"
-    />
+      />
     <div>
       <link
-      href="{{ url_for('static', filename='css/indexAuditorV1.css') }}"
+      href="{{ url_for('static', filename='css/indexContratistaV2.css') }}"
       rel="stylesheet"
       />
 
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
-          <div id="left-sde-nav" class="home-container01">
+          <div id="left-sde-nav" class="home-container1">
             <img
               alt="image"
               src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/357a4804-f777-4f67-833d-8570a139c209/d2cfbc5f-3e54-4039-8d3c-5b0b0d9409fc?org_if_sml=14445&amp;force_format=original"
               class="home-image"
             />
           </div>
-          <div id="righ-side-nav" class="home-container02">
-            <div id="links_container" class="home-container03">
+          <div id="righ-side-nav" class="home-container2">
+            <div id="links_container" class="home-container3">
               <span id="home_link" class="home-text">
                 <span>Home</span>
                 <br />
@@ -114,79 +114,49 @@
         </div>
         <div class="home-main">
           <div class="home-mainleft">
-            <img
-              src="/static/images/group%20137-200h-500w.png"
-              alt="image"
-              class="home-image1"
-            />
+            <span class="home-text10">Mis Contratos</span>
+            <div class="home-nombre-div">
+              <span class="home-text11">Usuario: pedro</span>
+            </div>
+            <div id="estadosDelContrato_n" class="home-estados-del-contrato">
+              <div id="contratoTextos" class="home-contrato-div">
+                <div id="contratoDIV_n" class="home-contrato">
+                  <span id="contrato" class="home-text12">Contrato 1</span>
+                </div>
+                <div id="fechaDIV_n" class="home-fecha">
+                  <span id="fecha" class="home-text13">Fecha</span>
+                </div>
+                <div id="EstadoDIV_n" class="home-estado">
+                  <span id="estado" class="home-text14">Estado actual</span>
+                </div>
+              </div>
+              <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
+                <img
+                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
+                  alt="image"
+                  class="home-image1"
+                />
+              </div>
+              <div
+                id="contenedorBotonBuscar"
+                class="home-contenedor-boton-buscar"
+              >
+                <button
+                  type="button"
+                  id="boton_n"
+                  class="home-botonlupa button"
+                >
+                  🔍
+                </button>
+              </div>
+            </div>
           </div>
           <div class="home-mainright">
-            <div class="home-container04">
-              <span class="home-text10">Hola , auditor!</span>
-            </div>
-            <div class="home-container05">
-              <span class="home-text11">
-                Nosotros te ayudaremos a registrar, rastrear y organizar todos
-                los procesos contractuales existentes en tu empresa.
-              </span>
-            </div>
-            <div class="home-container06">
-              <div class="home-container07">
-                <img
-                  src="/static/images/checkboxset1-200w.png"
-                  alt="image"
-                  class="home-image2"
-                />
-                <span class="home-text12">Crear nuevos contratos</span>
-              </div>
-              <div class="home-container08">
-                <img
-                  src="/static/images/checkboxset1-200w.png"
-                  alt="image"
-                  class="home-image3"
-                />
-                <span class="home-text13">
-                  Reportar Inconsistencias en datos de contratistas de forma
-                  rapida
-                </span>
-              </div>
-              <div class="home-container09">
-                <img
-                  src="/static/images/checkboxset1-200w.png"
-                  alt="image"
-                  class="home-image4"
-                />
-                <span class="home-text14">
-                  <span>Verificar prestaciones</span>
-                  <br />
-                  <span>de contratos</span>
-                </span>
-              </div>
-              <div class="home-container10">
-                <img
-                  src="/static/images/checkboxset1-200w.png"
-                  alt="image"
-                  class="home-image5"
-                />
-                <span class="home-text18">Historial de contratos</span>
-              </div>
-            </div>
-            <div class="home-container11">
-              <button
-                type="button"
-                id="nuevoContrato"
-                class="home-button button"
-              >
-                Nuevo contrato
-              </button>
-              <button
-                type="button"
-                id="misContratosButton"
-                class="home-button1 button"
-              >
-                <span id="verContratos" class="home-text19">Ver contratos</span>
-              </button>
-            </div>
+            <img
+              src="/static/images/group%2095-200w-200w.png"
+              alt="image"
+              class="home-image2"
+            />
           </div>
         </div>
       </div>
