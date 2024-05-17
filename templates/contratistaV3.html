@@ -121,49 +121,34 @@
               <br />
             </span>
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
-              <div id="contratoTextos" class="home-contrato-div">
+            <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
-                  <span id="contrato" class="home-documento-1">Contrato 1</span>
+                    <span id="contrato" class="home-documento-1">{{ contrato or 'Contrato 1' }}</span>
                 </div>
-              </div>
-              <div
-                id="contenedorBotonDocumento"
-                class="home-contenedor-boton-buscar"
-              >
-                <button
-                  type="button"
-                  id="boton_documento_n"
-                  class="home-botondocuemento button"
-                >
-                  📂
-                </button>
-              </div>
-              <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
-                <img
-                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
-                  alt="image"
-                  class="home-image1"
-                />
-              </div>
-              <div
-                id="contenedorBotonBuscar"
-                class="home-contenedor-boton-buscar1"
-              >
-                <button
-                  type="button"
-                  id="boton_n"
-                  class="home-botonlupa button"
-                >
-                  🔍
-                </button>
-              </div>
             </div>
-            <button type="button" id="volverButton" class="home-button button">
-              <span class="home-text15">
+            <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
+                <button type="button" id="boton_documento_n" class="home-botondocuemento button" onclick="{{ url_for('contratista.subir_documento_contratista') }}">
+                    📂
+                </button>
+            </div>
+            <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
+                <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
+            </div>
+            <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
+                <button type="button" id="boton_n" class="home-botonlupa button" onclick="{{ url_for('contratista.verifica_estado_documento_contratista') }}">
+                    🔍
+                </button>
+            </div>
+        </div>
+
+            </div>
+                   <a href="{{ url_for('contratista.volverDeV3') }}" id="volverButton" class="home-button button">
+            <span class="home-text15">
                 <span class="home-text16">Volver</span>
                 <br />
-              </span>
-            </button>
+            </span>
+        </a>
+
           </div>
           <div class="home-mainright">
             <span class="home-text18">
