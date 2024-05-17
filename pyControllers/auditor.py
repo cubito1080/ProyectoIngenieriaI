@@ -13,7 +13,16 @@ def auditorV2():
     # Aquí va la lógica para manejar la página de "Ver contratos"
     return render_template('auditorV2.html')
 
+@auditor_blueprint.route('/auditorV1')
+def auditorV1():
+    # Aquí va la lógica para manejar la página de "Ver contratos"
+    return render_template('auditorV1.html')
 
+
+@auditor_blueprint.route('/ruta', methods=['POST'])
+def formulario_nuevo_contrato():
+    # procesar data
+    return render_template('home.html')
 
 
 

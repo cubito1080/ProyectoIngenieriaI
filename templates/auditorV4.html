@@ -113,163 +113,88 @@
           </div>
         </div>
         <div class="home-container04">
-          <div id="left_side" class="home-container05">
-            <span class="home-text10">Nuevo contrato</span>
-            <span class="home-text11">
-              Para crear un nuevo contrato digita los datos del contratista.
-            </span>
-            <div class="home-container06">
-              <div id="nombre_container" class="home-container07">
+            <form action="{{ url_for('auditor.formulario_nuevo_contrato') }}" method="POST" class="home-container04">
+        <div class="home-container06">
+            <div id="nombre_container" class="home-container07">
                 <label id="nombre_label" for="nombre_input" class="home-text12">
-                  Nombre
+                    Nombre
                 </label>
-                <input
-                  type="text"
-                  id="nombre_input"
-                  class="home-textinput input"
-                />
-              </div>
-              <div id="tipo_contrato_container" class="home-container08">
-                <label
-                  id="tipo_contrato_label"
-                  for="tipo_contrato_input"
-                  class="home-text13"
-                >
-                  <span class="home-text14">Tipo de contrato</span>
-                  <br />
+                <input type="text" id="nombre_input" class="home-textinput input" />
+            </div>
+            <div id="tipo_contrato_container" class="home-container08">
+                <label id="tipo_contrato_label" for="tipo_contrato_input" class="home-text13">
+                    <span class="home-text14">Tipo de contrato</span>
+                    <br />
                 </label>
-                <input
-                  type="text"
-                  id="tipo_contrato_input"
-                  class="home-textinput01 input"
-                />
-              </div>
-              <div id="clase_arl_container" class="home-container09">
-                <label
-                  id="clase_arl_label"
-                  for="clase_arl_input"
-                  class="home-text16"
-                >
-                  Clase de ARL
+                <input type="text" id="tipo_contrato_input" class="home-textinput01 input" />
+            </div>
+            <div id="clase_arl_container" class="home-container09">
+                <label id="clase_arl_label" for="clase_arl_input" class="home-text16">
+                    Clase de ARL
                 </label>
-                <input
-                  type="text"
-                  id="clase_arl_input"
-                  class="home-textinput02 input"
-                />
-              </div>
-              <div id="cedula_container" class="home-container10">
+                <input type="text" id="clase_arl_input" class="home-textinput02 input" />
+            </div>
+            <div id="cedula_container" class="home-container10">
                 <label id="cedula_label" class="home-text17">Cédula</label>
-                <input
-                  type="number"
-                  id="cedula_input"
-                  class="home-textinput03 input"
-                />
-              </div>
-              <div id="metodo_de_pago_container" class="home-container11">
-                <label
-                  id="metodo_de_pago_label"
-                  for="metodo_de_pago_input"
-                  class="home-text18"
-                >
-                  Metodo de pago
+                <input type="number" id="cedula_input" class="home-textinput03 input" />
+            </div>
+            <div id="metodo_de_pago_container" class="home-container11">
+                <label id="metodo_de_pago_label" for="metodo_de_pago_input" class="home-text18">
+                    Metodo de pago
                 </label>
-                <input
-                  type="text"
-                  id="metodo_de_pago_input"
-                  class="home-textinput04 input"
-                />
-              </div>
-              <div id="fecha_container" class="home-container12">
+                <input type="text" id="metodo_de_pago_input" class="home-textinput04 input" />
+            </div>
+            <div id="fecha_container" class="home-container12">
                 <label id="fecha_label" for="fecha_input" class="home-text19">
-                  <span>Fecha de inicio</span>
-                  <br />
+                    <span>Fecha de inicio</span>
+                    <br />
                 </label>
-                <input
-                  type="date"
-                  id="fecha_input"
-                  class="home-textinput05 input"
-                />
-              </div>
-              <div id="sueldo_container" class="home-container13">
+                <input type="date" id="fecha_input" class="home-textinput05 input" />
+            </div>
+            <div id="sueldo_container" class="home-container13">
                 <label id="sueldo_label" for="sueldo_input" class="home-text22">
-                  <span>Sueldo</span>
-                  <br />
+                    <span>Sueldo</span>
+                    <br />
                 </label>
-                <input
-                  type="number"
-                  id="sueldo_input"
-                  class="home-textinput06 input"
-                />
-              </div>
-              <div id="bancaria_container" class="home-container14">
-                <label
-                  id="bancaria_label"
-                  for="bancaria_input"
-                  class="home-text25"
-                >
-                  <span>Cuenta bancaria</span>
-                  <br />
+                <input type="number" id="sueldo_input" class="home-textinput06 input" />
+            </div>
+            <div id="bancaria_container" class="home-container14">
+                <label id="bancaria_label" for="bancaria_input" class="home-text25">
+                    <span>Cuenta bancaria</span>
+                    <br />
                 </label>
-                <input
-                  type="number"
-                  id="bancaria_input"
-                  class="home-textinput07 input"
-                />
-              </div>
-              <div id="fecha_fin_container" class="home-container15">
-                <label
-                  id="fecha_fin_label"
-                  for="fecha_fin_input"
-                  class="home-text28"
-                >
-                  <span>Fecha fin</span>
-                  <br />
+                <input type="number" id="bancaria_input" class="home-textinput07 input" />
+            </div>
+            <div id="fecha_fin_container" class="home-container15">
+                <label id="fecha_fin_label" for="fecha_fin_input" class="home-text28">
+                    <span>Fecha fin</span>
+                    <br />
                 </label>
-                <input
-                  type="date"
-                  id="fecha_fin_input"
-                  class="home-textinput08 input"
-                />
-              </div>
-              <div id="servicio_container" class="home-container16">
-                <label
-                  id="servicio_label"
-                  for="servicio_input"
-                  class="home-text31"
-                >
-                  <span>Sueldo</span>
-                  <br />
+                <input type="date" id="fecha_fin_input" class="home-textinput08 input" />
+            </div>
+            <div id="servicio_container" class="home-container16">
+                <label id="servicio_label" for="servicio_input" class="home-text31">
+                    <span>Sueldo</span>
+                    <br />
                 </label>
-                <input
-                  type="text"
-                  id="servicio_input"
-                  class="home-textinput09 input"
-                />
-              </div>
+                <input type="text" id="servicio_input" class="home-textinput09 input" />
             </div>
             <div class="home-container17">
-              <button
-                type="button"
-                id="cancerlar_button"
-                class="home-button button"
-              >
-                Cancerlar
-              </button>
-              <button
-                type="button"
-                id="crear_button"
-                class="home-button1 button"
-              >
-                <span class="home-text34">
-                  <span class="home-text35">Crear</span>
-                  <br />
-                </span>
-              </button>
-            </div>
+                <button type="submit" id="crear_button" class="home-button1 button">
+                    Crear
+                </button>
+
+                <a href="{{ url_for('auditor.auditorV1') }}" id="volver_button" class="home-button button">
+                    Volver
+                </a>
+        </div>
+    </div>
+</form>
+
+
+        </div>
+
           </div>
         </div>
-      </div>
-    </div>
   </body>
 </html>
