@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Blueprint, redirect, url_for
+from flask import Flask, render_template, request, Blueprint, send_from_directory
 from dbConnection import connectDB
 from documento import *
 
@@ -65,7 +65,7 @@ def contratistaV3(cedula, cedulaAuditor):
     return render_template("contratistaV3.html", documentos=documentosContrato(cedula, cedulaAuditor))
 
 
-@contratista_blueprint.route('/verifica_estado_documento_contratista')
-def verDocumento():
+@contratista_blueprint.route('/ver_documento/<filename>')
+def ver_documento(filename):
     # Aquí va la lógica para ver el documento que seleccionó el contratista 
-    pass
+    return send_from_directory('./documentos/', filename)

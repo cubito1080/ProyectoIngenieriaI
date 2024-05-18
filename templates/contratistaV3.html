@@ -120,33 +120,34 @@
               <span>mi contrato</span>
               <br />
             </span>
+            {% for documento in documentos %}
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
-            <div id="contratoTextos" class="home-contrato-div">
+              <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
-                  {% for documento in documentos %}
-                    <span id="documento" class="home-documento-1">{{ documento["documento"] }}</span>
-                  {% endfor %}
+                  <span id="documento" class="home-documento-1">{{ documento["documento"] }}</span>
                 </div>
-            </div>
-            <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
-              <form id="uploadForm" method="POST" enctype="multipart/form-data">
-                <label class="file-label">
-                  📂
-                  <input type="file" name="file" id="fileInput">
-                </label>
-              </form>
-            </div>
-            <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
+              </div>
+              <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
+                <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                  <label class="file-label">
+                    📂
+                    <input type="file" name="file" id="fileInput">
+                  </label>
+                </form>
+              </div>
+              <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
                 <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
+              </div>
+              <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
+                <a href="{{ url_for('contratista.ver_documento', filename=documento['documento']) }}">
+                    <button type="button" id="boton_n" class="home-botonlupa button">
+                      🔍
+                    </button>
+                </a>
+              </div>
             </div>
-            <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
-                <button type="button" id="boton_n" class="home-botonlupa button" onclick="{{ url_for('contratista.ver_documento') }}">
-                    🔍
-                </button>
-            </div>
-        </div>
-
-      </div>
+            {% endfor %}
+          </div>
         <a href="{{ url_for('contratista.volverDeV3') }}" id="volverButton" class="home-button button">
             <span class="home-text15">
                 <span class="home-text16">Volver</span>
