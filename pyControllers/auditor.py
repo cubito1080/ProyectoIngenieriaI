@@ -26,8 +26,8 @@ def auditorV2(auditor={"cedula": 1011638823}):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
-        "SELECT * FROM contrato as c WHERE "
-        "c.cedula_auditor=%s", auditor["cedula"])
+        "SELECT * FROM contrato WHERE "
+        "cedula_auditor=%s", (auditor["cedula"], ))
 
     contratos = cursor.fetchall()
     cursor.close()

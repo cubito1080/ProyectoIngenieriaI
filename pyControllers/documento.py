@@ -13,6 +13,7 @@ def documentosContrato(contratista, auditor):
 
     documentos = cursor.fetchall()
     cursor.close()
+    print("tipo: ", type(documentos),"documentos: ", documentos)
     return documentos
 
 

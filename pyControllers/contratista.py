@@ -6,19 +6,23 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
 contratista_blueprint = Blueprint('contratista', __name__)
 
+@contratista_blueprint.route('/contratistaV1')
+def contratistaV1(contratista={"nombre": "prueba" ,"cedula": 1011511123}):
+    return render_template('contratistaV1.html', contratista=contratista)
+
 
 @contratista_blueprint.route('/contratistaV2')
                                     #cédula QUEMADA!!
-def contratistaV2(contratista={"cedula": 1011511123}):
+def contratistaV2(contratista={"nombre": "prueba" ,"cedula": 1011511123}):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
         "SELECT * FROM contrato as c WHERE "
-        "c.cedula_contratista=%s", contratista["cedula"])
+        "c.cedula_contratista=%s", (contratista["cedula"],))
 
     contratos = cursor.fetchall()
     cursor.close()
-    return render_template('contratistaV2.html', contratos=contratos)
+    return render_template('contratistaV2.html', contratista=contratista, contratos=contratos)
 
 
 @contratista_blueprint.route('/volverDeV3')
@@ -51,6 +55,6 @@ def contratistaV3(contratista={"cedula": "1011511123"}, auditor={"cedula": "1011
 
 
 @contratista_blueprint.route('/verifica_estado_documento_contratista')
-def verifica_estado_documento_contratista():
-    # Aquí va la lógica para manejar la página de "Mis contratos"
-    return render_template('contratistaV2.html')
+def verDocumento():
+    # Aquí va la lógica para ver el documento que seleccionó el contratista 
+    pass

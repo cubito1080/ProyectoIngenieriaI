@@ -123,7 +123,9 @@
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
             <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
-                    <span id="contrato" class="home-documento-1">{{ contrato or 'Contrato 1' }}</span>
+                  {% for documento in documentos %}
+                    <span id="documento" class="home-documento-1">{{ documento["documento"] }}</span>
+                  {% endfor %}
                 </div>
             </div>
             <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
@@ -138,7 +140,7 @@
                 <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
             </div>
             <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
-                <button type="button" id="boton_n" class="home-botonlupa button" onclick="{{ url_for('contratista.verifica_estado_documento_contratista') }}">
+                <button type="button" id="boton_n" class="home-botonlupa button" onclick="{{ url_for('contratista.ver_documento') }}">
                     🔍
                 </button>
             </div>

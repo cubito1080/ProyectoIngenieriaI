@@ -190,24 +190,22 @@
           <div class="home-mainleft">
             <span class="home-text10">Mis Contratos</span>
             <div class="home-nombre-div">
-              <span class="home-text11">Usuario: {{ usuario or 'pedro' }}</span>
+              <span class="home-text11">Usuario: {{ contratista["nombre"] or 'pedro' }}</span>
             </div>
+            {% for contrato in contratos %}
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_n" class="home-contrato">
-                  <span id="contrato" class="home-text12"
-                    >{{ contrato or 'Contrato 1' }}</span
-                  >
+                  <span id="contrato" class="home-text12"> {{ contrato["metodo_pago"] }} </span>
                 </div>
                 <div id="fechaDIV_n" class="home-fecha">
                   <span id="fecha" class="home-text13"
-                    >{{ fecha or 'Fecha' }}</span
+                    >{{ contrato["fecha_inicio"] }}</span
                   >
                 </div>
                 <div id="EstadoDIV_n" class="home-estado">
-                  <span id="estado" class="home-text14"
-                    >{{ estado or 'Estado actual' }}</span
-                  >
+                  <span id="estado" class="home-text14">{{ contrato["estado"].pop() }}</span>
+        <!-- el tipo de contrato["estado"] es set, y como solo tiene un elemento se puede hacer el pop  -->
                 </div>
               </div>
               <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
@@ -225,12 +223,12 @@
                   type="button"
                   id="boton_n"
                   class="home-botonlupa button"
-                  onclick="{{ url_for('contratista.verifica_estado_documento_contratista') }}"
                 >
-                  🔍
+                <a href="/contratistaV3">🔍</a>
                 </button>
               </div>
             </div>
+            {% endfor %}
           </div>
           <div class="home-mainright">
             <img
