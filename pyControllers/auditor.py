@@ -13,31 +13,29 @@ def auditorV4():
     return render_template('auditorV4.html')
 
 
-@auditor_blueprint.route('/AuditorV3')
+@auditor_blueprint.route('/AuditorV3/<cedula>/<cedulaContratista>')
 #Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
-def auditorV3(contratista={"cedula": 1011511123}, auditor={"cedula": 1011638823}):
+def auditorV3(cedula, cedulaContratista):
 
-    return render_template('AuditorV3.html', documentos=documentosContrato(contratista, auditor))
+    return render_template('AuditorV3.html', documentos=documentosContrato(cedulaContratista, cedulaAuditor=cedula))
 
 
-@auditor_blueprint.route('/auditorV2')
-                    # cedula QUEMADA
-def auditorV2(auditor={"cedula": 1011638823}):
+@auditor_blueprint.route('/auditorV2/<nombre>/<cedula>')
+def auditorV2(nombre, cedula):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
         "SELECT * FROM contrato WHERE "
-        "cedula_auditor=%s", (auditor["cedula"], ))
+        "cedula_auditor=%s", (cedula, ))
 
     contratos = cursor.fetchall()
     cursor.close()
-    return render_template('auditorV2.html', contratos=contratos)
+    return render_template('auditorV2.html', auditor={"nombre":nombre,"cedula":cedula}, contratos=contratos)
 
 
-@auditor_blueprint.route('/auditorV1')
-def auditorV1():
-    # Aquí va la lógica para manejar la página de "Ver contratos"
-    return render_template('auditorV1.html')
+@auditor_blueprint.route('/auditorV1/<nombre>/<cedula>')
+def auditorV1(nombre, cedula):
+    return render_template('auditorV1.html', auditor={"nombre": nombre, "cedula":cedula})
 
 
 @auditor_blueprint.route('/ruta', methods=['POST'])

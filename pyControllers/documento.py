@@ -4,16 +4,15 @@ from dbConnection import connectDB
 import os
 from werkzeug.utils import secure_filename
 
-def documentosContrato(contratista, auditor):
+def documentosContrato(cedulaContratista, cedulaAuditor):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
         "SELECT documento FROM documento as d join contratista as c join auditor as a WHERE " 
-        "c.cedula=%s and a.cedula=%s ", (contratista["cedula"], auditor["cedula"]))
+        "c.cedula=%s and a.cedula=%s ", (cedulaContratista, cedulaAuditor))
 
     documentos = cursor.fetchall()
     cursor.close()
-    print("tipo: ", type(documentos),"documentos: ", documentos)
     return documentos
 
 
