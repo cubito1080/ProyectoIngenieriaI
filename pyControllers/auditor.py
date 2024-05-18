@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Blueprint
+from flask import Flask, render_template, request, Blueprint, send_from_directory
 from dbConnection import connectDB
 from documento import documentosContrato
 
@@ -42,4 +42,10 @@ def auditorV1(nombre, cedula):
 def formulario_nuevo_contrato():
     # procesar data
     return render_template('home.html')
+
+
+@auditor_blueprint.route('/ver_documento/<filename>')
+def ver_documento(filename):
+    # Aquí va la lógica para ver el documento que seleccionó el contratista 
+    return send_from_directory('./documentos/', filename)
 
