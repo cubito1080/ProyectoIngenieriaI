@@ -122,7 +122,7 @@
           </div>
           <div class="home-mainright">
             <div class="home-container04">
-              <span class="home-text10">Hola , {{contratista["nombre"] or 'pedro!' }}</span>
+              <span class="home-text10">Hola , {{ contratista["nombre"] or 'pedro!' }}</span>
             </div>
             <div class="home-container05">
               <span class="home-text11">
@@ -184,14 +184,12 @@
                 <a href="{{ url_for('home') }}" id="volverButton" class="home-button button">
                     Volver
                 </a>
-                <a href="{{ url_for('contratista.contratistaV2') }}" id="misContratosButton" class="home-button1 button">
+                <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}" id="misContratosButton" class="home-button1 button">
                     <span class="home-text17">
                         <span class="home-text18">Mis contratos</span>
-                        <br />
                     </span>
                 </a>
             </div>
-
           </div>
         </div>
       </div>

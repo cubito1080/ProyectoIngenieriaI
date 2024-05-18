@@ -224,7 +224,7 @@
                   id="boton_n"
                   class="home-botonlupa button"
                 >
-                <a href="/contratistaV3">🔍</a>
+                <a href="{{ url_for('contratista.contratistaV3', cedula=contrato['cedula_contratista'], cedulaAuditor=contrato['cedula_auditor']) }}">🔍</a>
                 </button>
               </div>
             </div>

@@ -6,23 +6,34 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
 contratista_blueprint = Blueprint('contratista', __name__)
 
-@contratista_blueprint.route('/contratistaV1')
-def contratistaV1(contratista={"nombre": "prueba" ,"cedula": 1011511123}):
-    return render_template('contratistaV1.html', contratista=contratista)
+@contratista_blueprint.route('/contratistaV1/<nombre>/<cedula>')
+def contratistaV1(nombre, cedula):
+    connection = connectDB()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute(
+        "SELECT nombre FROM contratista WHERE "
+        "cedula=%s", (cedula,))
+
+    nombre = cursor.fetchone()["nombre"]
+    cursor.close()
+    
+    return render_template('contratistaV1.html', contratista={"nombre": nombre, "cedula": cedula})
 
 
-@contratista_blueprint.route('/contratistaV2')
+@contratista_blueprint.route('/contratistaV2/<nombre>/<cedula>')
                                     #cédula QUEMADA!!
-def contratistaV2(contratista={"nombre": "prueba" ,"cedula": 1011511123}):
+def contratistaV2(nombre, cedula):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
         "SELECT * FROM contrato as c WHERE "
-        "c.cedula_contratista=%s", (contratista["cedula"],))
+        "c.cedula_contratista=%s", (cedula,))
 
     contratos = cursor.fetchall()
     cursor.close()
-    return render_template('contratistaV2.html', contratista=contratista, contratos=contratos)
+    return render_template('contratistaV2.html',
+                            contratista={"nombre": nombre, "cedula": cedula},
+                            contratos=contratos)
 
 
 @contratista_blueprint.route('/volverDeV3')
@@ -36,9 +47,9 @@ def home():
     return render_template('home.html')
 
 
-@contratista_blueprint.route('/contratistaV3', methods=['GET', 'POST'])
+@contratista_blueprint.route('/contratistaV3/<cedula>/<cedulaAuditor>', methods=['GET', 'POST'])
 #Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
-def contratistaV3(contratista={"cedula": "1011511123"}, auditor={"cedula": "1011638823"}):
+def contratistaV3(cedula, cedulaAuditor):
     if request.method  == "POST":
         if request.files['file']:
             f = request.files['file']
@@ -49,9 +60,9 @@ def contratistaV3(contratista={"cedula": "1011511123"}, auditor={"cedula": "1011
             print("File added successfully to the db")
         else:
             print("Couldn't add file")
-        return render_template("contratistaV3.html", documentos=documentosContrato(contratista, auditor)), 200
+        return render_template("contratistaV3.html", documentos=documentosContrato(cedula, cedulaAuditor)), 200
 
-    return render_template("contratistaV3.html", documentos=documentosContrato(contratista, auditor))
+    return render_template("contratistaV3.html", documentos=documentosContrato(cedula, cedulaAuditor))
 
 
 @contratista_blueprint.route('/verifica_estado_documento_contratista')
