@@ -7,9 +7,18 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 auditor_blueprint = Blueprint('auditor', __name__)
 
 
-@auditor_blueprint.route('/auditorV4')
+@auditor_blueprint.route('/auditorV4', methods=['POST'])
 def auditorV4():
-    # Aquí va la lógica para manejar la página de "Nuevo contrato"
+    nombre = request.form.get('nombre_input')
+    tipo_contrato = request.form.get('tipo_contrato_input')
+    clase_arl = request.form.get('clase_arl_input')
+    cedula = request.form.get('cedula_input')
+    metodo_de_pago = request.form.get('metodo_de_pago_input')
+    fecha = request.form.get('fecha_input')
+    sueldo = request.form.get('sueldo_input')
+    bancaria = request.form.get('bancaria_input')
+    fecha_fin = request.form.get('fecha_fin_input')
+    servicio = request.form.get('servicio_input')
     return render_template('auditorV4.html')
 
 
