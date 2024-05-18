@@ -6,7 +6,7 @@ def connectDB():
             host="localhost",
             user='root',
             database='sac')
-        print("Db Connection succesfull")
+        print("Db Connection successfull")
         return cnx
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

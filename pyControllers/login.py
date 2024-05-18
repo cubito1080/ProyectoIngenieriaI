@@ -15,7 +15,8 @@ def login():
         request.form.get('apellido')
         request.form.get('cedula')
         request.form.get('telefono')
-        #Create contratista
+
+        #Crear el contratista, (cerrar el cursor si se abrió)
 
 
     if request.method == 'GET':
