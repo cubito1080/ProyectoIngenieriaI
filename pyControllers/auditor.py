@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, Blueprint
-from dbConnection import connectDB
+# from dbConnection import connectDB
+from documento import documentosContrato
+
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 auditor_blueprint = Blueprint('auditor', __name__)
@@ -12,17 +14,11 @@ def auditorV4():
 
 
 @auditor_blueprint.route('/AuditorV3')
-#Debe recibir el auditor y el contratista, o la cédula de ellos
-def auditorV3(auditor, contratista):
-    connection = connectDB()
-    cursor = connection.cursor(dictionary=True)
-    linkDocs = cursor().execute(
-        "SELECT documento FROM documento as d join auditor as a join contratista as c " 
-        "WHERE c.cedula=%s and a.cedula=%s", (contratista.cedula, auditor.cedula))
-    cursor.close()
+#Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
+def auditorV3(contratista={"cedula": "1011511123"}, auditor={"cedula": "1011638823"}):
+    
 
-    documentos = linkDocs
-    return render_template('AuditorV3.html', documentos=documentos)
+    return render_template('AuditorV3.html', documentos=documentosContrato(contratista, auditor))
 
 
 @auditor_blueprint.route('/auditorV2')

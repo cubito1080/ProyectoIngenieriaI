@@ -127,9 +127,12 @@
                 </div>
             </div>
             <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
-                <button type="button" id="boton_documento_n" class="home-botondocuemento button" onclick="{{ url_for('contratista.subir_documento_contratista') }}">
-                    📂
-                </button>
+              <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                <label class="file-label">
+                  📂
+                  <input type="file" name="file" id="fileInput">
+                </label>
+              </form>
             </div>
             <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
                 <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
@@ -141,8 +144,8 @@
             </div>
         </div>
 
-            </div>
-                   <a href="{{ url_for('contratista.volverDeV3') }}" id="volverButton" class="home-button button">
+      </div>
+        <a href="{{ url_for('contratista.volverDeV3') }}" id="volverButton" class="home-button button">
             <span class="home-text15">
                 <span class="home-text16">Volver</span>
                 <br />
@@ -163,5 +166,10 @@
         </div>
       </div>
     </div>
+    <script>
+      document.getElementById('fileInput').addEventListener('change', function() {
+          document.getElementById('uploadForm').submit();
+      });
+    </script>
   </body>
 </html>

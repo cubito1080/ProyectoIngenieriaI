@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, Blueprint
-from dbConnection import connectDB
+from flask import Flask, render_template, request, Blueprint, redirect, url_for
+# from dbConnection import connectDB
+from documento import *
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
@@ -23,16 +24,22 @@ def home():
     return render_template('home.html')
 
 
-@contratista_blueprint.route('/subir_documento_contratista')
-def subir_documento_contratista(contratista):
-    # Aquí va la lógica para manejar la página de "Mis contratos"
-    connection = connectDB()
-    cursor = connection.cursor()
-    contratos = cursor().execute(
-        "SELECT * FROM contrato as ct join contratista as c WHERE " 
-        "ct.cedula_contratiste=%s", contratista.cedula)
-    cursor.close()
-    return render_template('contratistaV2.html', contratos=contratos)
+@contratista_blueprint.route('/contratistaV3', methods=['GET', 'POST'])
+#Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
+def contratistaV3(contratista={"cedula": "1011511123"}, auditor={"cedula": "1011638823"}):
+    if request.method  == "POST":
+        if request.files['file']:
+            f = request.files['file']
+            file = handleFile(f)
+            result = uploadFile(file)
+        
+        if result == 1:
+            print("File added successfully to the db")
+        else:
+            print("Couldn't add file")
+        return render_template("contratistaV3.html", documentos=documentosContrato(contratista, auditor)), 200
+
+    return render_template("contratistaV3.html", documentos=documentosContrato(contratista, auditor))
 
 
 @contratista_blueprint.route('/verifica_estado_documento_contratista')
