@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, Blueprint, redirect, url_for
-# from dbConnection import connectDB
+from dbConnection import connectDB
 from documento import *
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
@@ -8,9 +8,17 @@ contratista_blueprint = Blueprint('contratista', __name__)
 
 
 @contratista_blueprint.route('/contratistaV2')
-def contratistaV2():
-    # Aquí va la lógica para manejar la página de "Mis contratos"
-    return render_template('contratistaV2.html')
+                                    #cédula QUEMADA!!
+def contratistaV2(contratista={"cedula": 1011511123}):
+    connection = connectDB()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute(
+        "SELECT * FROM contrato as c WHERE "
+        "c.cedula_contratista=%s", contratista["cedula"])
+
+    contratos = cursor.fetchall()
+    cursor.close()
+    return render_template('contratistaV2.html', contratos=contratos)
 
 
 @contratista_blueprint.route('/volverDeV3')
