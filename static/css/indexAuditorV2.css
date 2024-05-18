@@ -149,10 +149,11 @@
   align-items: flex-start;
   justify-items: center;
   justify-content: center;
+  flex-direction: row;
 }
 .home-mainleft {
   gap: var(--dl-space-space-threeunits);
-  flex: 0.9;
+  flex: 1;
   width: auto;
   height: auto;
   display: flex;
@@ -384,4 +385,9 @@
   .home-mainright {
     padding: 0 var(--dl-space-space-twounits) var(--dl-space-space-twounits);
   }
+}
+.home-text-above-image{
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
