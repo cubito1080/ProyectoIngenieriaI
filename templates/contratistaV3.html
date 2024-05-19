@@ -146,12 +146,13 @@
                 </a>
               </div>
             </div>
-            {% endfor %}
-          </div>
-        <a href="{{ url_for('contratista.volverDeV3') }}" id="volverButton" class="home-button button">
+        </div>
+
+      </div>
+        <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'], cedula=contratista['cedula']) }}"
+          id="volverButton" class="home-button button">
             <span class="home-text15">
                 <span class="home-text16">Volver</span>
-                <br />
             </span>
         </a>
 
