@@ -20,8 +20,8 @@ def contratistaV1(nombre, cedula):
     return render_template('contratistaV1.html', contratista={"nombre": nombre, "cedula": cedula})
 
 
+
 @contratista_blueprint.route('/contratistaV2/<nombre>/<cedula>')
-                                    #cédula QUEMADA!!
 def contratistaV2(nombre, cedula):
     connection = connectDB()
     cursor = connection.cursor(dictionary=True)
@@ -35,21 +35,15 @@ def contratistaV2(nombre, cedula):
                             contratista={"nombre": nombre, "cedula": cedula},
                             contratos=contratos)
 
-
-@contratista_blueprint.route('/volverDeV3')
-def volverDeV3():
-    # Aquí va la lógica para manejar la página de "Mis contratos"
-    return render_template('contratistaV2.html')
-
 @app.route('/')
 def home():
     # Aquí va la lógica para manejar la página de inicio
     return render_template('home.html')
 
 
-@contratista_blueprint.route('/contratistaV3/<cedula>/<cedulaAuditor>', methods=['GET', 'POST'])
+@contratista_blueprint.route('/contratistaV3/<nombre>/<cedula>/<cedulaAuditor>', methods=['GET', 'POST'])
 #Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
-def contratistaV3(cedula, cedulaAuditor):
+def contratistaV3(nombre, cedula, cedulaAuditor):
     if request.method  == "POST":
         if request.files['file']:
             f = request.files['file']
@@ -60,12 +54,12 @@ def contratistaV3(cedula, cedulaAuditor):
             print("File added successfully to the db")
         else:
             print("Couldn't add file")
-        return render_template("contratistaV3.html", documentos=documentosContrato(cedula, cedulaAuditor)), 200
+        return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(cedula, cedulaAuditor)), 200
 
-    return render_template("contratistaV3.html", documentos=documentosContrato(cedula, cedulaAuditor))
+    return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(cedula, cedulaAuditor))
 
 
-@contratista_blueprint.route('/verifica_estado_documento_contratista')
-def verDocumento():
+@contratista_blueprint.route('/ver_documento')
+def ver_documento():
     # Aquí va la lógica para ver el documento que seleccionó el contratista 
     pass

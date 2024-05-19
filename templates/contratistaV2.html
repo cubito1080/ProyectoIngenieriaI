@@ -199,9 +199,8 @@
                   <span id="contrato" class="home-text12"> {{ contrato["metodo_pago"] }} </span>
                 </div>
                 <div id="fechaDIV_n" class="home-fecha">
-                  <span id="fecha" class="home-text13"
-                    >{{ contrato["fecha_inicio"] }}</span
-                  >
+                  <span id="fecha" class="home-text13">
+                    {{ contrato["fecha_inicio"] }}</span>
                 </div>
                 <div id="EstadoDIV_n" class="home-estado">
                   <span id="estado" class="home-text14">{{ contrato["estado"].pop() }}</span>
@@ -212,20 +211,16 @@
                 <img
                   src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
                   alt="image"
-                  class="home-image1"
-                />
+                  class="home-image1"/>
               </div>
-              <div
-                id="contenedorBotonBuscar"
-                class="home-contenedor-boton-buscar"
-              >
-                <button
-                  type="button"
-                  id="boton_n"
-                  class="home-botonlupa button"
-                >
-                <a href="{{ url_for('contratista.contratistaV3', cedula=contrato['cedula_contratista'], cedulaAuditor=contrato['cedula_auditor']) }}">🔍</a>
-                </button>
+              <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar">
+                <a href="{{ url_for('contratista.contratistaV3', nombre=contratista['nombre'], cedula=contratista['cedula'], cedulaAuditor=contrato['cedula_auditor']) }}">
+                  <button
+                    type="button"
+                    id="boton_n"
+                    class="home-botonlupa button">🔍
+                  </button>
+                </a>
               </div>
             </div>
             {% endfor %}
