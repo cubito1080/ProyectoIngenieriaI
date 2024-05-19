@@ -195,7 +195,8 @@
                 Bienvenido otra vez, señor auditor
               </span>
             </div>
-            {% if contratos %} {% for contrato in contratos %}
+            {% if contratos %}
+            {% for contrato in contratos %}
             <div
               id="estadosDelContrato_{{ contrato.id }}"
               class="home-estados-del-contrato"
@@ -217,34 +218,23 @@
                   >
                 </div>
               </div>
-              <div
-                id="estadoImagenDIV_{{ contrato.id }}"
-                class="home-estado-imagen-div"
-              >
+              <div class="home-estado-imagen-div">
                 <img
-                  src="{{ url_for('static', filename=contrato.imagen) }}"
-                  alt="image"
-                  class="home-image1"
-                />
+                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
+                  alt="img"
+                  class="home-image1"/>
               </div>
-              <div
-                id="contenedorBotonBuscar"
-                class="home-contenedor-boton-buscar"
-              >
-                <button
-                  type="button"
-                  id="boton_{{ contrato.id }}"
-                  class="home-botonlupa button"
-                >
-                  🔍
-                </button>
+              <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar">
+                <a href="{{ url_for('auditor.auditorV3', cedula=contrato['cedula_auditor'], cedulaContratista=contrato['cedula_contratista']) }}">
+                  <button type="button" id="boton_{{ contrato.id }}" class="home-botonlupa button">🔍</button>
+                </a>
               </div>
             </div>
-            {% endfor %} {% else %}
+            {% endfor %}
+            {% else %}
             <div
               id="estadosDelContrato_default"
-              class="home-estados-del-contrato"
-            >
+              class="home-estados-del-contrato">
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_default" class="home-contrato">
                   <span id="contrato" class="home-text12"
