@@ -55,6 +55,5 @@ def formulario_nuevo_contrato():
 
 @auditor_blueprint.route('/ver_documento/<filename>')
 def ver_documento(filename):
-    # Aquí va la lógica para ver el documento que seleccionó el contratista 
     return send_from_directory('./documentos/', filename)
 

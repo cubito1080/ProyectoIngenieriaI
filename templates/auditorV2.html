@@ -195,26 +195,24 @@
                 Bienvenido otra vez, señor auditor
               </span>
             </div>
-            {% if contratos %} {% for contrato in contratos %}
+            {% if contratos %}
+            {% for contrato in contratos %}
             <div
               id="estadosDelContrato_{{ contrato.id }}"
               class="home-estados-del-contrato"
             >
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_{{ contrato.id }}" class="home-contrato">
-                  <span id="contrato" class="home-text12"
-                    >{{ contrato.nombre }}</span
-                  >
+                  <span id="contrato" class="home-text12">{{ contrato["metodo_pago"] }}</span>
                 </div>
                 <div id="fechaDIV_{{ contrato.id }}" class="home-fecha">
                   <span id="fecha" class="home-text13"
-                    >{{ contrato.fecha }}</span
+                    >{{ contrato["fecha_inicio"] }}</span
                   >
                 </div>
                 <div id="EstadoDIV_{{ contrato.id }}" class="home-estado">
                   <span id="estado" class="home-text14"
-                    >{{ contrato.estado }}</span
-                  >
+                    >{{ contrato["estado"].pop() }}</span>
                 </div>
               </div>
               <div class="home-estado-imagen-div">
@@ -227,13 +225,9 @@
                 id="contenedorBotonBuscar"
                 class="home-contenedor-boton-buscar"
               >
-                <button
-                  type="button"
-                  id="boton_{{ contrato.id }}"
-                  class="home-botonlupa button"
-                >
-                  🔍
-                </button>
+              <a href="{{ url_for('auditor.auditorV3', cedula=contrato['cedula_auditor'], cedulaContratista=contrato['cedula_contratista'] ) }}">
+                <button type="button" class="home-botonlupa button">🔍</button>
+              </a>
               </div>
             </div>
             {% endfor %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Blueprint, redirect, url_for
+from flask import Flask, render_template, request, Blueprint, send_from_directory
 from dbConnection import connectDB
 from documento import *
 
