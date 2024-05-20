@@ -61,11 +61,31 @@ def auditorV4(nombre, cedula):
 
 
 
-@auditor_blueprint.route('/auditorV3/<cedula>/<cedulaContratista>')
-#Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
+@auditor_blueprint.route('/auditorV3/<cedula>/<cedulaContratista>',methods=['GET', 'POST'])
 def auditorV3(cedula, cedulaContratista):
+    if request.method == 'POST':
 
-    return render_template('AuditorV3.html', documentos=documentosContrato(cedulaContratista, cedulaAuditor=cedula))
+
+        connection = connectDB()
+
+        nuevo_estado = "finalizado"
+        cursor = connection.cursor(dictionary=True)
+        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE cedula_auditor = '{cedula}' AND cedula_contratista = '{cedulaContratista}'"
+
+        # Ejecuta la consulta
+        cursor.execute(sql)
+
+        connection.commit()
+        cursor.close()
+
+
+
+        print("siiii")
+        return render_template("home.html")
+
+    if request.method == 'GET':
+        print("nooooo")
+        return render_template('AuditorV3.html', documentos=documentosContrato(cedulaContratista, cedulaAuditor=cedula))
 
 
 @auditor_blueprint.route('/auditorV2/<nombre>/<cedula>')
