@@ -126,7 +126,7 @@
               <label for="drop_list_estados"></label>
                 <select id="drop_list_estados">
                     <option value="Option 1" id="opcion_default">
-                      {{ documento['estado'] }}
+                      {{ documento['estado'].pop() }}
                     </option>
                     <option value="Option 2" id="opcion_finalizado">
                       finalizado
@@ -145,28 +145,14 @@
           </div>
           {% endfor %}
             <div class="home-container4">
-              <button
-                type="button"
-                id="agregarDocumentoButton"
-                class="home-button button"
-              >
-
                 <span class="home-text13">
-
                     <button class="home-button button" onclick="goBack()">Volver atrás</button>
-
-
-
                 </span>
-              </button>
-
             <form method="POST">
               <button
                 type="submit"
                 id="finalizar_contrato_button"
-                class="home-button1 button"
-              >
-
+                class="home-button1 button">
                 Finalizar contrato
               </button>
             </form>

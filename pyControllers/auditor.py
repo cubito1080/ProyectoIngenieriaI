@@ -14,7 +14,6 @@ auditor_blueprint = Blueprint('auditor', __name__)
 @auditor_blueprint.route('/auditorV4/<nombre>/<cedula>',methods=['GET', 'POST'])
 def auditorV4(nombre, cedula):
     if request.method == 'POST':
-
         nombre_ = request.form.get('nombre_')
         tipo_contrato = request.form.get('tipo_contrato')
         clase_arl = request.form.get('clase_arl')
@@ -81,33 +80,23 @@ def auditorV4(nombre, cedula):
         return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula})
 
 
-
-
-@auditor_blueprint.route('/auditorV3/<cedula>/<cedulaContratista>',methods=['GET', 'POST'])
-def auditorV3(cedula, cedulaContratista):
+@auditor_blueprint.route('/auditorV3/<contrato_id>',methods=['GET', 'POST'])
+def auditorV3(contrato_id):
     if request.method == 'POST':
-
-
         connection = connectDB()
-
         nuevo_estado = "finalizado"
         cursor = connection.cursor(dictionary=True)
-        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE cedula_auditor = '{cedula}' AND cedula_contratista = '{cedulaContratista}'"
-
+        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE contrato_id = '{contrato_id}'"
         # Ejecuta la consulta
         cursor.execute(sql)
-
         connection.commit()
         cursor.close()
-
-
-
         print("siiii")
         return render_template("home.html")
 
     if request.method == 'GET':
         print("nooooo")
-        return render_template('AuditorV3.html', documentos=documentosContrato(cedulaContratista, cedulaAuditor=cedula))
+        return render_template('AuditorV3.html', documentos=documentosContrato(contrato_id))
 
 
 @auditor_blueprint.route('/auditorV2/<nombre>/<cedula>')

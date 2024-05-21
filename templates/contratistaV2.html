@@ -214,7 +214,7 @@
                   class="home-image1"/>
               </div>
               <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar">
-                <a href="{{ url_for('contratista.contratistaV3', nombre=contratista['nombre'], cedula=contratista['cedula'], cedulaAuditor=contrato['cedula_auditor']) }}">
+                <a href="{{ url_for('contratista.contratistaV3', nombre=contratista['nombre'], cedula=contratista['cedula'], contrato_id=contrato['id'],) }}">
                   <button
                     type="button"
                     id="boton_n"

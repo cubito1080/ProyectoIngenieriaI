@@ -114,24 +114,13 @@
         </div>
         <div class="home-main">
           <div class="home-mainleft">
-            <span class="home-text10">
-              <span class="home-text11">documentos de</span>
-              <span>mi contrato</span>
-            </span>
+            <span class="home-text10">Documentos cargados</span>
             {% for documento in documentos %}
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
                     <span id="documento" class="home-documento-1">{{ documento["documento"] }}</span>
                 </div>
-              </div>
-              <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
-                <form id="uploadForm" method="POST" enctype="multipart/form-data">
-                  <label class="file-label">
-                    📂
-                    <input type="file" name="file" id="fileInput">
-                  </label>
-                </form>
               </div>
               <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
                 <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
@@ -146,6 +135,14 @@
             </div>
           </div>
           {% endfor %}
+        <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
+          <form id="uploadForm" method="POST" enctype="multipart/form-data">
+            <label class="file-label">
+              Subir documento 📂
+              <input type="file" name="file" id="fileInput">
+            </label>
+          </form>
+        </div>
         <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'], cedula=contratista['cedula'] ) }}"
            id="volverButton" class="home-button button">
             <span class="home-text15">

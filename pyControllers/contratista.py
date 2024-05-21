@@ -41,22 +41,21 @@ def home():
     return render_template('home.html')
 
 
-@contratista_blueprint.route('/contratistaV3/<nombre>/<cedula>/<cedulaAuditor>', methods=['GET', 'POST'])
-#Datos QUEMADOS. Debe recibir el contratista y auditor, o la cedula de ellos
-def contratistaV3(nombre, cedula, cedulaAuditor):
+@contratista_blueprint.route('/contratistaV3/<nombre>/<cedula>/<contrato_id>', methods=['GET', 'POST'])
+def contratistaV3(nombre, cedula, contrato_id):
     if request.method  == "POST":
         if request.files['file']:
             f = request.files['file']
             file = handleFile(f)
-            result = uploadFile(file)
+            result = uploadFile(file, contrato_id)
         
         if result == 1:
             print("File added successfully to the db")
         else:
             print("Couldn't add file")
-        return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(cedula, cedulaAuditor)), 200
+        return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(contrato_id)), 200
 
-    return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(cedula, cedulaAuditor))
+    return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula': cedula}, documentos=documentosContrato(contrato_id))
 
 
 @contratista_blueprint.route('/ver_documento/<filename>')
