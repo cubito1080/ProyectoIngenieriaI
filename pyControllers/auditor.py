@@ -24,8 +24,7 @@ def auditorV4(nombre, cedula):
         bancaria = request.form.get('bancaria')
         fecha_fin = request.form.get('fecha_fin')
         servicio = request.form.get('servicio')
-        print(nombre_, tipo_contrato, clase_arl, cedula_contratista, metodo_de_pago, fecha, sueldo, bancaria, fecha_fin,
-              servicio)
+
 
         try:
             connection = connectDB()
