@@ -25,7 +25,6 @@ def auditorV4(nombre, cedula):
         fecha_fin = request.form.get('fecha_fin')
         servicio = request.form.get('servicio')
 
-
         try:
             connection = connectDB()
 
