@@ -279,6 +279,10 @@
   flex-direction: row;
   padding: var(--dl-space-space-twounits);
   justify-content: center;
+  margin-left: auto;
+  margin-right: 200px;
+  margin-top: 100px;
+
 }
 .home-image2 {
   width: var(--dl-size-size-xxlarge);
@@ -290,6 +294,9 @@
   }
   .home-main {
     padding-top: var(--dl-space-space-threeunits);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .home-mainleft {
     gap: var(--dl-space-space-threeunits);
@@ -384,6 +391,10 @@
   }
   .home-mainright {
     padding: 0 var(--dl-space-space-twounits) var(--dl-space-space-twounits);
+    max-width: 400px;
+    overflow-x: auto;
+    margin-left: auto;
+    margin-right: 10px;
   }
 }
 .home-text-above-image{
@@ -396,3 +407,4 @@
   max-width: 300px;
   margin: 0 auto;
 }
+

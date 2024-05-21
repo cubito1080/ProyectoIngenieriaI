@@ -25,6 +25,8 @@ def auditorV4(nombre, cedula):
         bancaria = request.form.get('bancaria')
         fecha_fin = request.form.get('fecha_fin')
         servicio = request.form.get('servicio')
+        print(nombre_, tipo_contrato, clase_arl, cedula_contratista, metodo_de_pago, fecha, sueldo, bancaria, fecha_fin,
+              servicio)
 
         try:
             connection = connectDB()
@@ -53,6 +55,7 @@ def auditorV4(nombre, cedula):
             return redirect(url_for(f'auditor.auditorV1',
                                     nombre=nombre, cedula=cedula))
         except mysql.connector.Error as e:
+            print(e)
             return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula})
 
     if request.method == 'GET':
@@ -103,7 +106,7 @@ def auditorV2(nombre, cedula):
 
 @auditor_blueprint.route('/auditorV1/<nombre>/<cedula>')
 def auditorV1(nombre, cedula):
-    return render_template('auditorV1.html', auditor={"nombre": nombre, "cedula":cedula})
+    return render_template('auditorV1.html', auditor={"nombre": nombre, "cedula": cedula})
 
 
 @auditor_blueprint.route('/ruta', methods=['POST'])

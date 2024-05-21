@@ -17,7 +17,7 @@ app.add_url_rule('/signin', 'signin', signin, methods=['GET', 'POST'])
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template("home.html")
 
 
 if __name__ == '__main__':
