@@ -50,15 +50,14 @@ def auditorV4(nombre, cedula):
             cursor.execute(insert_query, data)
 
             connection.commit()
-            cursor.close()
 
 
-            connection = connectDB()
+
 
             insert_query = (
                 "INSERT INTO documento "
-                "(cedula_contratista, cedula_auditor, documento, estado, "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                "(cedula_contratista, cedula_auditor, documento, estado) "
+                "VALUES (%s, %s, %s, %s)"
             )
 
             # Datos a insertar
@@ -69,6 +68,8 @@ def auditorV4(nombre, cedula):
 
             connection.commit()
             cursor.close()
+            connection.close()
+
 
             return redirect(url_for(f'auditor.auditorV1',
                                     nombre=nombre, cedula=cedula))
