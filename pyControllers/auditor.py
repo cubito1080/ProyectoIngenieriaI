@@ -47,22 +47,7 @@ def auditorV4(nombre, cedula):
             # Ejecuta la consulta
             cursor.execute(insert_query, data)
 
-            connection.commit()
 
-
-
-
-            insert_query = (
-                "INSERT INTO documento "
-                "(cedula_contratista, cedula_auditor, documento, estado) "
-                "VALUES (%s, %s, %s, %s)"
-            )
-
-            # Datos a insertar
-            data = (
-                int(cedula_contratista),int(cedula),f"documento #","en espera")
-
-            cursor.execute(insert_query, data)
 
             connection.commit()
             cursor.close()
@@ -85,7 +70,7 @@ def auditorV3(contrato_id):
         connection = connectDB()
         nuevo_estado = "finalizado"
         cursor = connection.cursor(dictionary=True)
-        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE contrato_id = '{contrato_id}'"
+        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE id = '{contrato_id}'"
         # Ejecuta la consulta
         cursor.execute(sql)
         connection.commit()
