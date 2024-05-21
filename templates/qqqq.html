@@ -265,7 +265,7 @@
                   <input
                     type="date"
                     id="fecha_inicio_input"
-                    class="home-textinput2 input"
+                    class="wide-select"
                     name="fecha"
                   />
                 </div>
@@ -304,7 +304,7 @@
                   <input
                     type="date"
                     id="fecha_culminacion_input"
-                    class="home-textinput2 input"
+                    class="wide-select"
                     name="fecha_fin"
                   />
                 </div>
@@ -324,8 +324,8 @@
 
                 <div class="home-container13">
                     <a onclick="goBack()" class="home-button button">Cancelar</a>
-                  <button type="submit" class="home-button1 button" value="Enviar">
-                    Registrarse
+                  <button onclick="return validar()" type="submit" class="home-button1 button" value="Enviar">
+                    Crear
                   </button>
 
                 </div>
@@ -343,4 +343,27 @@
     function goBack() {
     window.history.back();
 }
+
+    function validar(){
+        var nombre = document.getElementById('name_input').value;
+        var tipoContrato = document.getElementById('tipo_contrato_input').value;
+        var claseARL = document.getElementById('arl_input').value;
+        var cedula = document.getElementById('cedula_input').value;
+        var metodoPago = document.getElementById('metodo_pago_input').value;
+        var fechaInicio = document.getElementById('fecha_inicio_input').value;
+        var sueldo = document.getElementById('sueldo_input').value;
+        var cuentaBancaria = document.getElementById('cuenta_bancaria_input').value;
+        var fechaCulminacion = document.getElementById('fecha_culminacion_input').value;
+        var servicios = document.getElementById('servicios_input').value;
+
+      // Verificar si algún campo está vacío
+        if (nombre === '' || tipoContrato === '' || claseARL === '' || cedula === '' || metodoPago === '' || fechaInicio === '' || sueldo === '' || cuentaBancaria === '' || fechaCulminacion === '' || servicios === '') {
+            alert('Por favor llene todos los campos');
+            return false;
+        }
+
+
+
+        // Mostrar un mensaje de error o realizar alguna acción
+    }
 </script>

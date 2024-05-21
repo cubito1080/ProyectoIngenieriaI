@@ -1,13 +1,14 @@
 .home-container {
   width: 100%;
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   min-height: 100vh;
   padding-left: 0;
   padding-right: 0;
   flex-direction: column;
   padding-bottom: 0;
   background-color: #D3D3D3;
+  overflow-x: hidden;
 }
 .home-navbar {
   flex: 1;
@@ -392,7 +393,6 @@
     width: 100%;
     height: 100%;
     flex-direction: row;
-    justify-content: center;
   }
   .home-container05 {
     flex: 1;
@@ -542,4 +542,3 @@
   padding-bottom: 13px;
   width: 250px;
 }
-
