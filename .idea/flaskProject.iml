@@ -9,7 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/virtualENV" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (ProyectoIngenieriaI)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="animate.css" level="application" />
     <orderEntry type="library" name="@teleporthq/teleport-custom-scripts" level="application" />
