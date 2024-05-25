@@ -25,7 +25,6 @@ def auditorV4(nombre, cedula):
         fecha_fin = request.form.get('fecha_fin')
         servicio = request.form.get('servicio')
 
-
         try:
             connection = connectDB()
 
@@ -47,22 +46,7 @@ def auditorV4(nombre, cedula):
             # Ejecuta la consulta
             cursor.execute(insert_query, data)
 
-            connection.commit()
 
-
-
-
-            insert_query = (
-                "INSERT INTO documento "
-                "(cedula_contratista, cedula_auditor, documento, estado) "
-                "VALUES (%s, %s, %s, %s)"
-            )
-
-            # Datos a insertar
-            data = (
-                int(cedula_contratista),int(cedula),f"documento #","en espera")
-
-            cursor.execute(insert_query, data)
 
             connection.commit()
             cursor.close()
