@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - documentos</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -25,8 +25,6 @@
         line-height: 1.15;
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
-
-
       }
     </style>
     <link
@@ -58,33 +56,15 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
       data-tag="font"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
+    <link rel="stylesheet" data-tag="font"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"/>
+    <link rel="stylesheet" data-tag="font"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"/>
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"/>
+    <link href="{{ url_for('static', filename='css/styleAuditorV3.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/indexAuditorV3.css') }}" rel="stylesheet"/>
   </head>
   <body>
-    <link
-      href="{{ url_for('static', filename='css/styleAuditorV3.css') }}"
-      rel="stylesheet"
-      />
-    <div>
-    <div>
-      <link
-      href="{{ url_for('static', filename='css/indexAuditorV3.css') }}"
-      rel="stylesheet"
-      />
-    <div>
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
           <div id="left-sde-nav" class="home-container1">
@@ -107,75 +87,59 @@
         </div>
         <div class="home-main">
           <div class="home-mainleft">
-            <span class="home-text10">
-              <span class="home-text11">documentos de un contrato</span>
-            </span>
-            {% for documento in documentos %}
+            <span class="home-text10">Documentos del contrato</span>
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
+              {% for documento in documentos %}
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
                   <span id="contrato" class="home-documento-1">{{ documento['documento'] }}</span>
                 </div>
+                <div id="contenedorBotonDocumento" class="contenedor-button">
+                  <button type="button" id="boton_documento_n" class="home-botondocuemento button">📂</button>
+                </div>
+                <div>
+                  <form action="{{ url_for('auditor.actualizar_estado',  documento_id=documento['id'], contrato_id=documento['contrato_id']) }}" method="POST">
+                    <select id="drop_list_estados" name="estado" style="background: transparent;" onchange="this.form.submit()">
+                      <option value="{{ documento['estado'].copy().pop() }}">
+                        {{ documento['estado'].copy().pop().capitalize() }}
+                      </option>
+                      {% for opcion in opciones %}
+                      {% if opcion != documento['estado'].copy().pop() %}
+                      <option value="{{ opcion }}">
+                        {{ opcion.capitalize() }}
+                      </option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>
+                  </form>
+                </div>
+                <div id="contenedorBotonBuscar" class="contenedor-button" style="margin-inline:1% ;">
+                  <a href="{{ url_for('auditor.ver_documento', filename=documento['documento']) }}">
+                    <button type="button" id="boton_n" class="home-botonlupa button">🔍</button>
+                  </a>
+                </div>
               </div>
-              <div
-                id="contenedorBotonDocumento"
-                class="home-contenedor-boton-buscar">
-                <button type="button" id="boton_documento_n"
-                  class="home-botondocuemento button">📂</button>
-              </div>
-              <label for="drop_list_estados"></label>
-                <select id="drop_list_estados">
-                    <option value="Option 1" id="opcion_default">
-                      {{ documento['estado'].pop() }}
-                    </option>
-                    <option value="Option 2" id="opcion_aceptado">
-                      aceptado
-                    </option>
-                    <option value="Option 3" id="opcion_rechazado">
-                      rechazado
-                    </option>
-                </select>
-              <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
-              <a href="{{ url_for('auditor.ver_documento', filename=documento['documento']) }}">
-                <button type="button" id="boton_n" class="home-botonlupa button">
-                  🔍
-                </button>
-              </a>
+              {% endfor %}
             </div>
-          </div>
-          {% endfor %}
             <div class="home-container4">
                 <span class="home-text13">
-                    <button class="home-button button" onclick="goBack()">Volver atrás</button>
+                    <button class="home-button button" onclick="goBack()">Volver</button>
                 </span>
             <form method="POST">
-              <button
-                type="submit"
-                id="finalizar_contrato_button"
-                class="home-button1 button">
+              <button type="submit" id="finalizar_contrato_button" class="home-button1 button">
                 Finalizar contrato
               </button>
             </form>
             </div>
           </div>
-          <div class="home-mainright">
-            <img
-              src="/static/images/other%2007reg-600w.png"
-              alt="image"
-              class="home-image1"
-            />
-          </div>
+        <div class="home-mainright">
+          <img src="/static/images/other%2007reg-600w.png" alt="image" class="home-image1"/>
         </div>
       </div>
-    </div>
   </body>
 </html>
-
-
-
 <script>
-
     function goBack() {
-    window.history.back();
-}
+      window.history.back();
+    }
 </script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - documentos</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -95,79 +95,79 @@
           </div>
           <div id="righ-side-nav" class="home-container2">
             <div id="links_container" class="home-container3">
-              <span id="home_link" class="home-text">
-                <span>Home</span>
-                <br />
-              </span>
-              <span id="features_link" class="home-text03">Features</span>
-              <span id="case_studies_link" class="home-text04">
-                Case Studies
-              </span>
-              <span id="pricing_link" class="home-text05">Pricing</span>
-              <span id="faq_link" class="home-text06">FAQ</span>
-              <span id="contact_link" class="home-text07">
-                <span>Contact US</span>
-                <br />
-              </span>
+              <span id="home_link" class="home-text">Home</span>
+              <span id="features_link" class="home-text">Features</span>
+              <span id="case_studies_link" class="home-text">Case Studies</span>
+              <span id="pricing_link" class="home-text">Pricing</span>
+              <span id="faq_link" class="home-text">FAQ</span>
+              <span id="contact_link" class="home-text">Contact US</span>
             </div>
           </div>
         </div>
         <div class="home-main">
           <div class="home-mainleft">
             <span class="home-text10">Documentos cargados</span>
-            {% for documento in documentos %}
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
+              {% for documento in documentos %}
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
-                    <span id="documento" class="home-documento-1">{{ documento["documento"] }}</span>
+                  <span id="contrato" class="home-documento-1">{{ documento['documento'] }}</span>
+                </div>
+                <div class="contenedor-button">
+                  <button type="button" id="boton_documento_n" class="home-botondocuemento button">📂</button>
+                </div>
+                <div class="contenedor-button" style="margin-right: 1%;">
+                  {% if documento["estado"].copy().pop() == 'en espera' %}
+                    <img class="home-image1" alt="En espera"
+                      src="/static/images/en espera.png"/>
+                  {% elif documento["estado"].copy().pop() == 'aprobado' %}
+                    <img class="home-image1" alt="Aprobado"
+                      src="/static/images/aprobado.png"/>
+                  {% else %}
+                    <img class="home-image1" alt="No Aprobado"/>
+                      <!-- src="/static/images/"
+                        /> -->
+                  {% endif %}
+                </div>
+                <div class="contenedor-button" style="margin-inline: 0%;">
+                  <a href="{{ url_for('auditor.ver_documento', filename=documento['documento']) }}">
+                    <button type="button" id="boton_n" class="home-botonlupa button">🔍</button>
+                  </a>
                 </div>
               </div>
-              <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
-                <img src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png" alt="image" class="home-image1" />
-              </div>
-              <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar1">
-                <a href="{{ url_for('contratista.ver_documento', filename=documento['documento']) }}">
-                  <button type="button" id="boton_n" class="home-botonlupa button">
-                    🔍
-                  </button>
+              {% endfor %}
+            </div>
+            <div style="display:flex; gap: 20px; margin-top: 3%;">
+              <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'], cedula=contratista['cedula'] ) }}"
+                id="volverButton" class="button-volver button"> 
+                <span>Volver</span>
               </a>
-              </div>
+              <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                <label class="file-label home-button button">
+                  <span style="color: #FFFFFF; font-weight: 400;">Subir documento</span>
+                  <input type="file" name="file" id="fileInput" class="file-label">
+                </input>
+                </label>
+              </form>
             </div>
           </div>
-          {% endfor %}
-        <div id="contenedorBotonDocumento" class="home-contenedor-boton-buscar">
-          <form id="uploadForm" method="POST" enctype="multipart/form-data">
-            <label class="file-label">
-              Subir documento 📂
-              <input type="file" name="file" id="fileInput">
-            </label>
-          </form>
-        </div>
-        <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'], cedula=contratista['cedula'] ) }}"
-           id="volverButton" class="home-button button">
-            <span class="home-text15">
-                <span class="home-text16">Volver</span>
-            </span>
-        </a>
-
-          </div>
           <div class="home-mainright">
-            <span class="home-text18">
+            <span class="home-text10" style="align-items: flex-end; text-align: end;">
               ¡Revisa los estados de tus documentos!
             </span>
             <img
-              src="/static/images/group%20139-600w.png"
-              alt="image"
-              class="home-image2"
-            />
+                src="/static/images/group%20139-600w.png"
+                alt="image"
+                class="home-image2"/>
           </div>
         </div>
       </div>
+      </div>
     </div>
-    <script>
-      document.getElementById('fileInput').addEventListener('change', function() {
-          document.getElementById('uploadForm').submit();
-      });
-    </script>
   </body>
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function() {
+        document.getElementById('uploadForm').submit();
+    });
+  </script>
 </html>
