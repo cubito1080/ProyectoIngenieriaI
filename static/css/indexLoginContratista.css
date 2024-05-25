@@ -345,7 +345,7 @@
 .home-button1:hover {
   transform: translateY(-7px);
   background: #E64A19;
-  border-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
 }
 .home-text20 {
   font-style: normal;
@@ -355,7 +355,7 @@
 .home-text21:hover {
   transform: translateY(-7px);
   background: #E64A19;
-  border-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
 }
 .home-container14 {
   gap: var(--dl-space-space-oneandhalfunits);

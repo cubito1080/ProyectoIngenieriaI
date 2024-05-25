@@ -217,7 +217,7 @@
               </div>
               <div class="home-estado-imagen-div">
                 <img
-                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
+                  src="/static/images/en espera.png"
                   alt="img"
                   class="home-image1"/>
               </div>
@@ -225,7 +225,7 @@
                 id="contenedorBotonBuscar"
                 class="home-contenedor-boton-buscar"
               >
-              <a href="{{ url_for('auditor.auditorV3', contrato_id=contrato['id'], ) }}">
+              <a href="{{ url_for('auditor.auditorV3', contrato_id=contrato['id'], documento_id=None ) }}">
                 <button type="button" class="home-botonlupa button">🔍</button>
               </a>
 

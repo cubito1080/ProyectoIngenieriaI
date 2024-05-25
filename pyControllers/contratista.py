@@ -44,6 +44,7 @@ def home():
 @contratista_blueprint.route('/contratistaV3/<nombre>/<cedula>/<contrato_id>', methods=['GET', 'POST'])
 def contratistaV3(nombre, cedula, contrato_id):
     if request.method  == "POST":
+        result=0
         if request.files['file']:
             f = request.files['file']
             file = handleFile(f)

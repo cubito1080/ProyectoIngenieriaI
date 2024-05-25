@@ -79,23 +79,13 @@ def auditorV4(nombre, cedula):
         return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula})
 
 
-@auditor_blueprint.route('/auditorV3/<contrato_id>',methods=['GET', 'POST'])
+@auditor_blueprint.route('/auditorV3/<contrato_id>', methods=['GET'])
 def auditorV3(contrato_id):
-    if request.method == 'POST':
-        connection = connectDB()
-        nuevo_estado = "finalizado"
-        cursor = connection.cursor(dictionary=True)
-        sql = f"UPDATE contrato SET estado = '{nuevo_estado}' WHERE contrato_id = '{contrato_id}'"
-        # Ejecuta la consulta
-        cursor.execute(sql)
-        connection.commit()
-        cursor.close()
-        print("siiii")
-        return render_template("home.html")
-
     if request.method == 'GET':
-        print("nooooo")
-        return render_template('AuditorV3.html', documentos=documentosContrato(contrato_id))
+        documentos = documentosContrato(contrato_id)
+        print(documentos)
+        return render_template('AuditorV3.html', documentos=documentos, 
+                                opciones=['en espera', 'aprobado', 'no aprobado'])
 
 
 @auditor_blueprint.route('/auditorV2/<nombre>/<cedula>')
@@ -126,3 +116,15 @@ def formulario_nuevo_contrato():
 def ver_documento(filename):
     return send_from_directory('./documentos/', filename)
 
+
+
+@auditor_blueprint.route('/actualizar_estado/<documento_id>/<contrato_id>', methods=['POST'])
+def actualizar_estado(documento_id, contrato_id):
+    nuevo_estado = request.form.get('estado')
+    print("nuevo ESTADO: ", nuevo_estado)
+    connection = connectDB()
+    cursor = connection.cursor()
+    cursor.execute("UPDATE documento SET estado=%s WHERE id=%s", (nuevo_estado, documento_id))
+    connection.commit()
+    cursor.close()
+    return redirect(url_for('auditor.auditorV3', contrato_id=contrato_id)) 

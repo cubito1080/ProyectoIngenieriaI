@@ -5,8 +5,7 @@ from dbConnection import connectDB
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
-
-def login():
+def registrarse():
     if request.method == 'POST':
         #manejar post, al hundirse el boton "registrarse" habra que hacer exepciones y redigir al sign in o home
 
