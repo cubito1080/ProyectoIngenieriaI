@@ -114,19 +114,22 @@
                   <span id="contrato" class="home-documento-1">{{ documento['documento'] }}</span>
                 </div>
                 <div class="contenedor-button">
-                  <button type="button" id="boton_documento_n" class="home-botondocuemento button">📂</button>
+                  <form id="modifyForm" enctype="multipart/form-data"  method="POST" 
+                    action="{{ url_for('contratista.actualizar_documento', documento_id=documento['id'], nombre=contratista['nombre'], cedula=contratista['cedula'], contrato_id=documento['contrato_id']) }}">
+                    <label class="file-modifier home-botondocuemento button">
+                      <span>📂</span>
+                      <input type="file" name="file" id="fileModifier" class="file-modifier" 
+                        onchange="document.getElementById('modifyForm').submit()">
+                    </label>
+                  </form>
                 </div>
                 <div class="contenedor-button" style="margin-right: 1%;">
                   {% if documento["estado"].copy().pop() == 'en espera' %}
-                    <img class="home-image1" alt="En espera"
-                      src="/static/images/en espera.png"/>
+                    <img class="home-image1" alt="En espera" src="/static/images/en espera.png"/>
                   {% elif documento["estado"].copy().pop() == 'aprobado' %}
-                    <img class="home-image1" alt="Aprobado"
-                      src="/static/images/aprobado.png"/>
+                    <img class="home-image1" alt="Aprobado" src="/static/images/aprobado.png"/>
                   {% else %}
-                    <img class="home-image1" alt="No Aprobado"/>
-                      <!-- src="/static/images/"
-                        /> -->
+                    <img class="home-image1" alt="No Aprobado" src="/static/images/no aprobado.png"/>
                   {% endif %}
                 </div>
                 <div class="contenedor-button" style="margin-inline: 0%;">
