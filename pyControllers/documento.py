@@ -24,8 +24,15 @@ def handleFile(file):
 
     uploadPath = os.path.join(basepath, 'documentos', newFileName)
     file.save(uploadPath)
-
     return newFileName
+
+def updateFile(file, documento_id):
+    connection = connectDB()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute("UPDATE documento SET documento=%s WHERE id=%s", (file, documento_id))
+    connection.commit()
+    cursor.close()
+    return cursor.rowcount
 
 
 def uploadFile(file, contrato_id):

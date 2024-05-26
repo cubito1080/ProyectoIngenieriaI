@@ -128,21 +128,24 @@
   display: flex;
   align-items: flex-start;
 }
+#modifyForm{
+  align-items: center;
+  text-align: center;
+}
+
 .contenedor-button {
-  width: 40px;
-  height: 40px;
   margin-inline: 3%;
   display: flex;
   align-items: center;
   text-align: center;
   border-color: var(--dl-color-gray-black);
+  width: 55px;
+  height: 55px;
 }
 .contenedor-button form{
   text-align: center;
   justify-content: center;
   position: relative;
-  width: 40px;
-  height: 40px;
 }
 
 
@@ -294,6 +297,10 @@
     align-items: flex-start;
     justify-content: flex-start;
   }
+}
+
+.file-modifier input[type='file'] {
+  display: none;
 }
 
 .file-label {
