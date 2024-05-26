@@ -33,9 +33,11 @@ def signin():
                                         nombre=auditor["nombre"], cedula=auditor["cedula"]))
                 
             raise Exception
+
         except Exception as e:
             print("Error in Sign in: ", e)
-            return "User not found or incorrect password", 401
+            return render_template("signIn.html", alert_message="Datos Incorrectos")
+
         
 
 

@@ -176,8 +176,27 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
   </head>
   <body>
+
+  {% if alert_message %}
+    <script type="text/javascript">
+        Swal.fire({
+            title: 'Alerta!',
+            text: "{{ alert_message }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    {% endif %}
+
     <link
       href="{{ url_for('static', filename='css/contratista_sign_in_style.css') }}"
       rel="stylesheet"
@@ -269,7 +288,7 @@
             <div id="login_section" class="home-righside">
               <form method="POST" class="home-container06">
                 <div id="mail_section" class="home-container5">
-                  <label id="email_label" for="email_input">Email</label>
+                  <label id="email_label" for="email_input">Correo</label>
                   <input
                     type="text"
                     id="email_input"
@@ -292,8 +311,9 @@
                   id="buttons_div_container"
                   class="home-buttonsdivcontainer"
                 >
-                  <a href="{{ url_for('login') }}" id="register_button" class="home-button button">Register</a>
-                  <button type="submit" id="sign_in_button" class="home-button1 button">Sign in</button>
+                    <button type="submit" id="sign_in_button" class="home-button1 button">Iniciar sesión</button>
+                    <a href="{{ url_for('login') }}" id="register_button" class="home-button button">Regístrate</a>
+
 
                 </div>
               </form>
