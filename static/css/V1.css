@@ -310,20 +310,13 @@
   transition: 0.3s;
   text-align: center;
   align-items: center;
-  font-family: "auto", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   background-color: #009688;
 }
 .home-button1:hover {
-  transform: translateY(-7px);
-  background: #E64A19;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
-}
-.home-text17 {
-  font-family: "Inter", sans-serif;
-}
-.home-text18:hover {
   transform: translateY(-7px);
   background: #E64A19;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
@@ -360,7 +353,7 @@
     width: 100%;
     height: auto;
     padding: var(--dl-space-space-twounit);
-    margin-right: 30px;
+    margin-right: 20px;
   }
 }
 @media(max-width: 1200px) {

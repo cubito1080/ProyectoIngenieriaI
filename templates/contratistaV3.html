@@ -85,24 +85,7 @@
       />
 
       <div class="home-container">
-        <div id="nav_bar" class="home-navbar">
-          <div id="left-sde-nav" class="home-container1">
-            <img
-              alt="image"
-              src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/357a4804-f777-4f67-833d-8570a139c209/d2cfbc5f-3e54-4039-8d3c-5b0b0d9409fc?org_if_sml=14445&amp;force_format=original"
-              class="home-image"
-            />
-          </div>
-          <div id="righ-side-nav" class="home-container2">
-            <div id="links_container" class="home-container3">
-              <span id="home_link" class="home-text">Home</span>
-              <span id="features_link" class="home-text">Features</span>
-              <span id="case_studies_link" class="home-text">Case Studies</span>
-              <span id="pricing_link" class="home-text">Pricing</span>
-              <span id="faq_link" class="home-text">FAQ</span>
-              <span id="contact_link" class="home-text">Contact US</span>
-            </div>
-          </div>
+         {% include 'navbar.html' %}
         </div>
         <div class="home-main">
           <div class="home-mainleft">
@@ -114,19 +97,22 @@
                   <span id="contrato" class="home-documento-1">{{ documento['documento'] }}</span>
                 </div>
                 <div class="contenedor-button">
-                  <button type="button" id="boton_documento_n" class="home-botondocuemento button">📂</button>
+                  <form id="modifyForm" enctype="multipart/form-data"  method="POST" 
+                    action="{{ url_for('contratista.actualizar_documento', documento_id=documento['id'], nombre=contratista['nombre'], cedula=contratista['cedula'], contrato_id=documento['contrato_id']) }}">
+                    <label class="file-modifier home-botondocuemento button">
+                      <span>📂</span>
+                      <input type="file" name="file" id="fileModifier" class="file-modifier" 
+                        onchange="document.getElementById('modifyForm').submit()">
+                    </label>
+                  </form>
                 </div>
                 <div class="contenedor-button" style="margin-right: 1%;">
                   {% if documento["estado"].copy().pop() == 'en espera' %}
-                    <img class="home-image1" alt="En espera"
-                      src="/static/images/en espera.png"/>
+                    <img class="home-image1" alt="En espera" src="/static/images/en espera.png"/>
                   {% elif documento["estado"].copy().pop() == 'aprobado' %}
-                    <img class="home-image1" alt="Aprobado"
-                      src="/static/images/aprobado.png"/>
+                    <img class="home-image1" alt="Aprobado" src="/static/images/aprobado.png"/>
                   {% else %}
-                    <img class="home-image1" alt="No Aprobado"/>
-                      <!-- src="/static/images/"
-                        /> -->
+                    <img class="home-image1" alt="No Aprobado" src="/static/images/no aprobado.png"/>
                   {% endif %}
                 </div>
                 <div class="contenedor-button" style="margin-inline: 0%;">

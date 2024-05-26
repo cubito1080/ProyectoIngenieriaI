@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Blueprint, send_from_directory
+from flask import Flask, render_template, request, Blueprint, send_from_directory, redirect, url_for
 from dbConnection import connectDB
 from documento import *
 
@@ -54,9 +54,23 @@ def contratistaV3(nombre, cedula, contrato_id):
             print("File added successfully to the db")
         else:
             print("Couldn't add file")
-        return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(contrato_id)), 200
+        return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula':cedula}, documentos=documentosContrato(contrato_id))
 
     return render_template("contratistaV3.html", contratista={'nombre':nombre, 'cedula': cedula}, documentos=documentosContrato(contrato_id))
+
+
+@contratista_blueprint.route('/actualizar_documento/<documento_id>/<nombre>/<cedula>/<contrato_id>', methods=['POST'])
+def actualizar_documento(documento_id, nombre, cedula, contrato_id):
+    if request.files['file']:
+        f = request.files['file']
+        file = handleFile(f)
+        result = updateFile(file, documento_id)
+        if result == 1:
+            print("File updated successfully to the db")
+        else:
+            print("Couldn't update file")
+
+    return redirect(url_for('contratista.contratistaV3', nombre=nombre, cedula=cedula, contrato_id=contrato_id)) 
 
 
 @contratista_blueprint.route('/ver_documento/<filename>')

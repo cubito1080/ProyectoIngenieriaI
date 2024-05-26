@@ -5,7 +5,7 @@ from mysql.connector import errorcode
 def connectDB():
     try:
         cnx = mysql.connector.connect(
-            host="localhost",
+            host="127.0.0.1",
             user='root',
             database='sac')
         print("Db Connection successfull")
@@ -17,4 +17,6 @@ def connectDB():
             print("Database does not exist")
         else:
             print(err)
-        
+
+
+conectar = connectDB()
