@@ -13,6 +13,16 @@ auditor_blueprint = Blueprint('auditor', __name__)
 
 @auditor_blueprint.route('/auditorV4/<nombre>/<cedula>',methods=['GET', 'POST'])
 def auditorV4(nombre, cedula):
+    connection = connectDB()
+
+    cursor = connection.cursor(dictionary=True)
+    get_query = (
+        "SELECT cedula FROM contratista"
+    )
+
+    cursor.execute(get_query)
+    cedulas = cursor.fetchall()
+
     if request.method == 'POST':
 
         nombre_ = request.form.get('nombre_')
@@ -28,9 +38,7 @@ def auditorV4(nombre, cedula):
 
 
         try:
-            connection = connectDB()
 
-            cursor = connection.cursor(dictionary=True)
 
             insert_query = (
                 "INSERT INTO contrato "
@@ -59,6 +67,9 @@ def auditorV4(nombre, cedula):
                 "VALUES (%s, %s, %s, %s)"
             )
 
+            # Obtener cédulas
+
+
             # Datos a insertar
             data = (
                 int(cedula_contratista),int(cedula),f"documento #","en espera")
@@ -74,10 +85,10 @@ def auditorV4(nombre, cedula):
                                     nombre=nombre, cedula=cedula))
         except mysql.connector.Error as e:
             print(e)
-            return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula})
+            return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula}, cedulas=cedulas)
 
     if request.method == 'GET':
-        return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula})
+        return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula}, cedulas=cedulas)
 
 
 

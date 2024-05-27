@@ -146,6 +146,8 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <link
@@ -236,12 +238,11 @@
                     for="cedula_input"
                     class="home-text14"
                     >Cédula</label>
-                  <input
-                    type="text"
-                    id="cedula_input"
-                    class="home-textinput2 input"
-                    name="cedula_"
-                  />
+                      <select id="cedula_input" class="wide-select" name="cedula_">
+                          {% for dict in cedulas %}
+                                <option value="{{ dict['cedula'] }}">{{ dict['cedula'] }}</option>
+                          {% endfor %}
+                      </select>
                 </div>
                   <div id="metodo_pago_container" class="home-container09">
                   <label
@@ -337,60 +338,45 @@
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const inputs = document.querySelectorAll('input[type="text"], input[type="date"], select');
-        inputs.forEach(input => {
-            const value = localStorage.getItem(input.id);
-            if (value) {
-                input.value = value;
-            }
-        });
-    });
 
     function goBack() {
     window.history.back();
 }
 
     function validar(){
-        const inputs = document.querySelectorAll('input[type="text"], input[type="date"], select');
+        var nombre = document.getElementById('name_input').value;
+        var tipoContrato = document.getElementById('tipo_contrato_input').value;
+        var claseARL = document.getElementById('arl_input').value;
+        var cedula = document.getElementById('cedula_input').value;
+        var metodoPago = document.getElementById('metodo_pago_input').value;
+        var fechaInicio = document.getElementById('fecha_inicio_input').value;
+        var sueldo = document.getElementById('sueldo_input').value;
+        var cuentaBancaria = document.getElementById('cuenta_bancaria_input').value;
+        var fechaCulminacion = document.getElementById('fecha_culminacion_input').value;
+        var servicios = document.getElementById('servicios_input').value;
 
-        let valido = true;
-        let mensaje = '';
-        inputs.forEach(input => {
-            if (input.value === '') {
-                mensaje = 'Por favor llene todos los campos';
-                input.focus();
-                valido = false;
-                return false;
-            }
-        });
-
-        const fechaInicio = new Date(document.getElementById('fecha_inicio_input').value);
-        const fechaCulminacion = new Date(document.getElementById('fecha_culminacion_input').value);
-
-        if (fechaCulminacion < fechaInicio) {
-            alert('La fecha de culminación no puede ser anterior a la fecha de inicio');
-            document.getElementById('fecha_culminacion_input').focus();
+        // Verificar si algún campo está vacío
+        if (nombre === '' || tipoContrato === '' || claseARL === '' || cedula === null || metodoPago === '' || fechaInicio === '' || sueldo === '' || cuentaBancaria === '' || fechaCulminacion === '' || servicios === '') {
+            Swal.fire({
+                icon: "error",
+                title: "¡Error!",
+                text: "Por favor llene todos los campos",
+                confirmButtonText: "Aceptar"
+            });
             return false;
         }
 
-        if (mensaje !== ''){
-            alert(mensaje)
+        // Verificar si la fecha de culminación es anterior a la fecha de inicio
+        if (new Date(fechaCulminacion) < new Date(fechaInicio)) {
+            Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: 'La fecha de culminación no puede ser anterior a la fecha de inicio',
+            confirmButtonText: 'Aceptar'
+            });
+            return false;
         }
 
-        // Si la validación falla, almacenar los datos en localStorage
-        if (!valido) {
-            inputs.forEach(input => {
-                localStorage.setItem(input.id, input.value);
-            });
-        } else {
-            // Si la validación es exitosa, borrar los datos de localStorage
-            inputs.forEach(input => {
-                localStorage.removeItem(input.id);
-            });
-        }
-
-        return valido;
 
     }
 </script>
