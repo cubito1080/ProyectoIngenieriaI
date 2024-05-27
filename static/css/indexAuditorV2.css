@@ -185,7 +185,7 @@
 .home-estados-del-contrato {
   gap: var(--dl-space-space-unit);
   flex: 0 0 auto;
-  width: auto;
+  width: 100%;
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -195,10 +195,10 @@
   gap: var(--dl-space-space-fourunits);
   flex: 0 0 auto;
   color: white;
-  width: auto;
+  width: 90%;
   height: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-color: var(--dl-color-gray-black);
   border-width: 1px;
   border-radius: 20px;

@@ -92,7 +92,7 @@
               {% for documento in documentos %}
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="documentoDIV" class="home-documento-div">
-                  <span id="contrato" class="home-documento-1">📂 {{ +documento['documento'] }}</span>
+                  <span id="contrato" class="home-documento-1">📂 {{ documento['documento'] }}</span>
                 </div>
                 <div>
                   <form action="{{ url_for('auditor.actualizar_estado',  documento_id=documento['id'], contrato_id=documento['contrato_id']) }}" method="POST">

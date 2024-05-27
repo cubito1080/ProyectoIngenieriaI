@@ -10,6 +10,11 @@ def iniciarSesion():
         email = request.form.get('email')
         password = request.form.get('password')
         # SEGUN EL TIPO DE USUARIO, EL RENDER SERA DE CONTRATISTA V1 O AUDITOR V1
+
+        if not(email or password):
+            return render_template("signIn.html", alert_message="Debe llenar todos los campos")
+
+
         try:
             connection = connectDB()
             cursor = connection.cursor(dictionary=True)
@@ -38,7 +43,6 @@ def iniciarSesion():
 
 
         except Exception as e:
-            flash('Ocurrió un error al procesar tu solicitud', 'error')
             print("Error in Sign in: ", e)
 
             return render_template("signIn.html", alert_message="Datos Incorrectos")

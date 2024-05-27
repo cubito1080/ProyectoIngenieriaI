@@ -257,13 +257,7 @@
                 <input type="password" id="password_input" class="input-section input" name="password"
                     value="{{ request.form.password if request.form.password else '' }}"/>
               </div>
-              {% with messages = get_flashed_messages(with_categories=true) %}
-              {% if messages %}
-              {% for category, message in messages %}
-                <p style="text-align: center; color: red;">{{ message }}</p>
-              {% endfor %}
-              {% endif %}
-              {% endwith %}
+
               <div id="buttons_div_container" class="button-section">
                 
                 <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">Iniciar sesión</button>
