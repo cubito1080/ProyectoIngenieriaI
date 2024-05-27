@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - contratista</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -75,15 +75,12 @@
   </head>
   <body>
     <link
-      href="{{ url_for('static', filename='css/styleContratistaV1.css') }}"
-      rel="stylesheet"
-    />
+      href="{{ url_for('static', filename='css/styleV1.css') }}"
+      rel="stylesheet"/>
     <div>
       <link
-      href="{{ url_for('static', filename='css/indexContratistaV1.css') }}"
-      rel="stylesheet"
-    />
-
+        href="{{ url_for('static', filename='css/V1.css') }}"
+        rel="stylesheet"/>
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
           <div id="left-sde-nav" class="home-container01">
@@ -114,78 +111,69 @@
         </div>
         <div class="home-main">
           <div class="home-mainleft">
-            <img
-              alt="image"
-              src="/static/images/group%20135-800w.png"
-              class="home-image1"
-            />
+            <img alt="image" src="/static/images/group%20135-800w.png" class="home-image1"/>
           </div>
           <div class="home-mainright">
             <div class="home-container04">
-              <span class="home-text10">Hola , {{ contratista["nombre"] or 'pedro!' }}</span>
+              <span class="text-title">¡Hola, {{ contratista["nombre"] }}!</span>
             </div>
             <div class="home-container05">
-              <span class="home-text11">
+              <span class="text-subtitle">
                 Nosotros te ayudaremos a registrar, rastrear y organizar todos
-                los procesos contractuales
+                tus procesos contractuales
               </span>
             </div>
             <div class="home-container06">
               <div class="home-container07">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
-                  class="home-image2"
-                />
-                <span class="home-text12">
-                  Sube los comprobantes de manera sencilla
-                </span>
+                  class="home-image2"/>
+                <span class="text-subtitle"> Sube tus comprobantes de manera sencilla</span>
               </div>
               <div class="home-container08">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image3"
                 />
-                <span class="home-text13">
+                <span class="text-subtitle">
                   Sube los comprobantes de manera sencilla
                 </span>
               </div>
               <div class="home-container09">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image4"
                 />
-                <span class="home-text14">Consulta tus prestaciones</span>
+                <span class="text-subtitle">Consulta tus prestaciones</span>
               </div>
-              <div class="home-container10">
+              <div class="home-container09">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image5"
                 />
-                <span class="home-text15">
-                  Ten un historial de todos tus contratos
-                </span>
+                <span class="text-subtitle">Ten un historial de todos tus contratos</span>
               </div>
-              <div class="home-container11">
+              <div class="home-container10">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image6"
                 />
-                <span class="home-text16">
-                  Ten tu experiencia laboral a la mano
-                </span>
+                <span class="text-subtitle">Ten tu experiencia laboral a la mano</span>
               </div>
             </div>
             <div class="home-container12">
+
 
                 <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}" id="misContratosButton" class="home-button1 button">
                     <span class="home-text17">
                         <span class="home-text18">Mis contratos</span>
                     </span>
+
                 </a>
                 <a href="{{ url_for('home') }}" id="volverButton" class="home-button button">
                     Cerrar sesión

@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from dbConnection import connectDB
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
 
-def signin():
+@app.route('/signIn', methods=['GET', 'POST'])
+def iniciarSesion():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -29,17 +30,23 @@ def signin():
             cursor.close()
 
             if auditor:
-                return redirect(url_for(f'auditor.auditorV1', 
+                return redirect(url_for('auditor.auditorV1', 
                                         nombre=auditor["nombre"], cedula=auditor["cedula"]))
+
                 
             raise Exception
 
+
         except Exception as e:
+            flash('Ocurrió un error al procesar tu solicitud', 'error')
             print("Error in Sign in: ", e)
+
             return render_template("signIn.html", alert_message="Datos Incorrectos")
 
-        
 
+ 
+          
+        
 
     if request.method == 'GET':
         return render_template('signIn.html')

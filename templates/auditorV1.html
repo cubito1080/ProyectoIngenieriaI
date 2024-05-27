@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - auditor</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -70,20 +70,17 @@
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"/>
   </head>
   <body>
     <link
-      href="{{ url_for('static', filename='css/styleAuditorV1.css') }}"
+      href="{{ url_for('static', filename='css/styleV1.css') }}"
       rel="stylesheet"
     />
     <div>
       <link
-      href="{{ url_for('static', filename='css/indexAuditorV1.css') }}"
-      rel="stylesheet"
-      />
-
+        href="{{ url_for('static', filename='css/V1.css') }}"
+        rel="stylesheet"/>
       <div class="home-container">
         <div id="nav_bar" class="home-navbar">
           <div id="left-sde-nav" class="home-container01">
@@ -114,64 +111,55 @@
         </div>
         <div class="home-main">
           <div class="home-mainleft">
-            <img
-              src="/static/images/group%20137-200h-500w.png"
-              alt="image"
-              class="home-image1"
-            />
+            <img src="/static/images/group%20137-200h-500w.png" alt="image"class="home-image1"/>
           </div>
           <div class="home-mainright">
-            <div class="home-container04">
-              <span class="home-text10">Hola , auditor!</span>
+            <div class="home-container04">  
+              <span class="text-title">¡Hola, {{ auditor["nombre"] }}!</span>
             </div>
             <div class="home-container05">
-              <span class="home-text11">
+              <span class="text-subtitle">
                 Nosotros te ayudaremos a registrar, rastrear y organizar todos
-                los procesos contractuales existentes en tu empresa.
+                los procesos contractuales de tu empresa.
               </span>
             </div>
             <div class="home-container06">
               <div class="home-container07">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
-                  class="home-image2"
-                />
-                <span class="home-text12">Crear nuevos contratos</span>
+                  class="home-image2"/>
+                <span class="text-subtitle">Crear nuevos contratos</span>
               </div>
               <div class="home-container08">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image3"
                 />
-                <span class="home-text13">
+                <span class="text-subtitle">
                   Reportar Inconsistencias en datos de contratistas de forma
                   rapida
                 </span>
               </div>
               <div class="home-container09">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image4"
                 />
-                <span class="home-text14">
-                  <span>Verificar prestaciones</span>
-                  <br />
-                  <span>de contratos</span>
-                </span>
+                <span class="text-subtitle">Verifica los documentos de seguridad social de tus contratos</span>
               </div>
               <div class="home-container10">
                 <img
-                  src="/static/images/checkboxset1-200w.png"
+                  src="/static/images/aprobado.png"
                   alt="image"
                   class="home-image5"
                 />
-                <span class="home-text18">Historial de contratos</span>
+                <span class="text-subtitle">Historial de contratos</span>
               </div>
             </div>
-            <div class="home-container11">
+            <div class="home-container12">
                 <a href="{{ url_for('auditor.auditorV4', nombre=auditor['nombre'], cedula=auditor['cedula']) }}" id="nuevoContrato" class="home-button button">Nuevo contrato</a>
                 <a href="{{ url_for('auditor.auditorV2', nombre=auditor['nombre'], cedula=auditor['cedula']) }}" id="misContratosButton" class="home-button1 button">Ver contratos</a>
                 <a href="{{ url_for('home') }}" id="volverButton" class="home-button button">Cerrar sesión</a>

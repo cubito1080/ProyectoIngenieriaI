@@ -256,6 +256,7 @@
 .home-image1 {
   width: var(--dl-size-size-small);
   object-fit: cover;
+  border-radius: 3px;
 }
 .home-contenedor-boton-buscar {
   flex: 0 0 auto;
