@@ -170,8 +170,27 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
   </head>
   <body>
+
+  {% if alert_message %}
+    <script type="text/javascript">
+        Swal.fire({
+            title: 'Alerta!',
+            text: "{{ alert_message }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    {% endif %}
+
     <link
       href="{{ url_for('static', filename='css/contratista_sign_in_style.css') }}"
       rel="stylesheet"
@@ -225,6 +244,7 @@
               ¡Juntos, haremos que la contratación sea más fácil y transparente!
             </span>
           </div>
+
           <div class="home-rightside">
             <form action="{{ url_for('signIn') }}" method="POST" style="width: 100%;">
               <div id="mail_section" class="input-container" style="gap: 60px;">
@@ -245,9 +265,12 @@
               {% endif %}
               {% endwith %}
               <div id="buttons_div_container" class="button-section">
+                
+                <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">Iniciar sesión</button>
                 <a href="{{ url_for('logIn') }}" id="register_button" class="home-button button">Crear cuenta</a>
-                <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">Inicia sesión</button>
+                
               </div>
+
               </form>
             </div>
           </div>

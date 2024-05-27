@@ -56,6 +56,11 @@
   padding-right: 0;
   justify-content: flex-start;
 }
+
+/* En tu archivo style.css */
+
+
+
 .home-text {
   padding: 14px 16px;
   font-size: 20px;
@@ -226,6 +231,12 @@
   font-size: 30px;
   font-weight: 500;
 }
+
+.home-text133 {
+    font-size: 20;
+    align-self: flex-start;
+  }
+
 .home-estado {
   flex: 0 0 auto;
   width: auto;
@@ -270,6 +281,26 @@
   transform: translateY(-7px);
   background: #009688;
 }
+
+
+
+.home-button {
+  color: rgb(255, 255, 255);
+  border: none;
+  transition: 0.3s;
+  font-family: "auto", sans-serif;
+  border-radius: 5px;
+  border-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: var(--dl-space-space-halfunit) var(--dl-space-space-fourunits);
+  background-color: #009688;
+}
+.home-button:hover {
+  transform: translateY(-7px);
+  background: #E64A19;
+  border-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+
 .home-mainright {
   gap: var(--dl-space-space-twounits);
   flex: 0;
@@ -342,6 +373,13 @@
     font-size: 30px;
     font-weight: 500;
   }
+
+  .home-text133 {
+    font-style: normal;
+    font-weight: 200;
+  }
+
+
   .home-estado {
     width: auto;
     height: auto;
@@ -362,6 +400,14 @@
   }
   .home-botonlupa {
     background-image: initial;
+  }
+
+  .home-button {
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    background-color: #009688;
   }
 }
 @media(max-width: 1200px) {
@@ -390,6 +436,14 @@
     font-size: 25px;
     font-weight: 500;
   }
+
+
+   .home-text133 {
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 200;
+  }
+
   .home-mainright {
     padding: 0 var(--dl-space-space-twounits) var(--dl-space-space-twounits);
     max-width: 400px;

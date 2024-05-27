@@ -167,13 +167,18 @@
               </div>
             </div>
             <div class="home-container12">
+
+
+                <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}" id="misContratosButton" class="home-button1 button">
+                    <span class="home-text17">
+                        <span class="home-text18">Mis contratos</span>
+                    </span>
+
+                </a>
                 <a href="{{ url_for('home') }}" id="volverButton" class="home-button button">
-                    Volver
+                    Cerrar sesión
                 </a>
-                <a href="{{ url_for('contratista.contratistaV2', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}"
-                    id="misContratosButton" class="home-button1 button">
-                    <span class="home-text18">Mis contratos</span>
-                </a>
+
             </div>
           </div>
         </div>

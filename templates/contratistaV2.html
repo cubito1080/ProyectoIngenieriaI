@@ -221,6 +221,15 @@
               </div>
             </div>
             {% endfor %}
+
+
+            <span class="home-text133">
+                <a href="{{ url_for('contratista.contratistaV1', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}" id="misContratosButton" class="home-button button">
+                    Volver
+                </a>
+                </span>
+
+
           </div>
           <div class="home-mainright">
             <img
@@ -234,3 +243,12 @@
     </div>
   </body>
 </html>
+
+
+
+<script>
+
+    function goBack() {
+    window.history.back();
+}
+</script>

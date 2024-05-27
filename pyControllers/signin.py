@@ -33,13 +33,19 @@ def iniciarSesion():
                 return redirect(url_for('auditor.auditorV1', 
                                         nombre=auditor["nombre"], cedula=auditor["cedula"]))
 
-            flash('Correo electrónico o contraseña incorrectos', 'email-pass')
-            return render_template('signIn.html')
+                
+            raise Exception
+
 
         except Exception as e:
             flash('Ocurrió un error al procesar tu solicitud', 'error')
             print("Error in Sign in: ", e)
-            return render_template('signIn.html')
+
+            return render_template("signIn.html", alert_message="Datos Incorrectos")
+
+
+ 
+          
         
 
     if request.method == 'GET':
