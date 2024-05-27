@@ -146,6 +146,8 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <link
@@ -282,7 +284,7 @@
                 </div>
 
                 <div class="home-container13">
-                  <button type="submit" class="home-button1 button">
+                  <button type="submit" onclick="validarCorreo()" class="home-button1 button">
                     Registrarse
                   </button>
                   <a href="{{ url_for('home') }}" class="home-button button">Volver</a>
@@ -303,3 +305,21 @@
     </div>
   </body>
 </html>
+
+<script>
+    function validarCorreo(){
+        var correo = document.getElementById('email_input').value;
+        var correoValido = /^[a-zA-Z0-9._-]+@(gmail|hotmail)\.com$/;
+        if (!correoValido.test(correo)){
+            Swal.fire({
+                icon: "error",
+                title: "¡Error!",
+                text: "Por favor ingrese un correo electrónico válido",
+                confirmButtonText: "Aceptar"
+
+            })
+
+        }
+    }
+
+</script>
