@@ -209,8 +209,8 @@
                   <label id="tipo_contrato_label" for="tipo_contrato_input" class="home-text13">Tipo de contrato</label>
                     <select id="tipo_contrato_input" class="wide-select" name="tipo_contrato">
                         <option value="obra o labor">Obra o labor</option>
-                        <option value="contrato2">Contrato 2</option>
-                        <option value="contrato3">Contrato 3</option>
+                        <option value="trabajo a termino indefinido">Trabajo a término indefinido</option>
+                        <option value="trabajo a termino fijo">Trabajo a término fijo</option>
                     </select>
 
                 </div>
@@ -313,7 +313,7 @@
                     id="servicios_label"
                     for="servicios_input"
                     class="home-text14"
-                    >Servicios a prestar</label>
+                    >Descripción de los servicios a prestar</label>
                   <input
                     type="text"
                     id="servicios_input"
@@ -323,11 +323,8 @@
                 </div>
 
                 <div class="home-container13">
+                    <button onclick="return validar()" type="submit" class="home-button1 button" value="Enviar">Crear</button>
                     <a onclick="goBack()" class="home-button button">Cancelar</a>
-                  <button onclick="return validar()" type="submit" class="home-button1 button" value="Enviar">
-                    Crear
-                  </button>
-
                 </div>
               </form>
             </div>
@@ -340,30 +337,60 @@
 
 <script>
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = document.querySelectorAll('input[type="text"], input[type="date"], select');
+        inputs.forEach(input => {
+            const value = localStorage.getItem(input.id);
+            if (value) {
+                input.value = value;
+            }
+        });
+    });
+
     function goBack() {
     window.history.back();
 }
 
     function validar(){
-        var nombre = document.getElementById('name_input').value;
-        var tipoContrato = document.getElementById('tipo_contrato_input').value;
-        var claseARL = document.getElementById('arl_input').value;
-        var cedula = document.getElementById('cedula_input').value;
-        var metodoPago = document.getElementById('metodo_pago_input').value;
-        var fechaInicio = document.getElementById('fecha_inicio_input').value;
-        var sueldo = document.getElementById('sueldo_input').value;
-        var cuentaBancaria = document.getElementById('cuenta_bancaria_input').value;
-        var fechaCulminacion = document.getElementById('fecha_culminacion_input').value;
-        var servicios = document.getElementById('servicios_input').value;
+        const inputs = document.querySelectorAll('input[type="text"], input[type="date"], select');
 
-      // Verificar si algún campo está vacío
-        if (nombre === '' || tipoContrato === '' || claseARL === '' || cedula === '' || metodoPago === '' || fechaInicio === '' || sueldo === '' || cuentaBancaria === '' || fechaCulminacion === '' || servicios === '') {
-            alert('Por favor llene todos los campos');
+        let valido = true;
+        let mensaje = '';
+        inputs.forEach(input => {
+            if (input.value === '') {
+                mensaje = 'Por favor llene todos los campos';
+                input.focus();
+                valido = false;
+                return false;
+            }
+        });
+
+        const fechaInicio = new Date(document.getElementById('fecha_inicio_input').value);
+        const fechaCulminacion = new Date(document.getElementById('fecha_culminacion_input').value);
+
+        if (fechaCulminacion < fechaInicio) {
+            alert('La fecha de culminación no puede ser anterior a la fecha de inicio');
+            document.getElementById('fecha_culminacion_input').focus();
             return false;
         }
 
+        if (mensaje !== ''){
+            alert(mensaje)
+        }
 
+        // Si la validación falla, almacenar los datos en localStorage
+        if (!valido) {
+            inputs.forEach(input => {
+                localStorage.setItem(input.id, input.value);
+            });
+        } else {
+            // Si la validación es exitosa, borrar los datos de localStorage
+            inputs.forEach(input => {
+                localStorage.removeItem(input.id);
+            });
+        }
 
-        // Mostrar un mensaje de error o realizar alguna acción
+        return valido;
+
     }
 </script>
