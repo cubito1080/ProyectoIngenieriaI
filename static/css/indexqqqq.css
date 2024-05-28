@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   overflow: auto;
+  overflow-x: hidden;
   min-height: 100vh;
   padding-left: 0;
   padding-right: 0;
