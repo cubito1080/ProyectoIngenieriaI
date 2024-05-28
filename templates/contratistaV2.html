@@ -178,17 +178,14 @@
                 </div>
                 <div id="EstadoDIV_n" class="home-estado">
                   <span id="estado" class="home-text14">{{ contrato["estado"].pop() }}</span>
-        <!-- el tipo de contrato["estado"] es set, y como solo tiene un elemento se puede hacer el pop  -->
+        <!-- el tipo de contrato["estado"] es set, y como solo tiene un elemento se debe hacer  .pop()  -->
                 </div>
               </div>
               <div id="estadoImagenDIV_n" class="home-estado-imagen-div">
-                <img
-                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
-                  alt="image"
-                  class="home-image1"/>
+                <img src="/static/images/en espera.png" alt="image" class="home-image1"/>
               </div>
               <div id="contenedorBotonBuscar" class="home-contenedor-boton-buscar">
-                <a href="{{ url_for('contratista.contratistaV3', nombre=contratista['nombre'], cedula=contratista['cedula'], cedulaAuditor=contrato['cedula_auditor']) }}">
+                <a href="{{ url_for('contratista.contratistaV3', nombre=contratista['nombre'], cedula=contratista['cedula'], contrato_id=contrato['id'],) }}">
                   <button
                     type="button"
                     id="boton_n"
@@ -198,6 +195,15 @@
               </div>
             </div>
             {% endfor %}
+
+
+            <span class="home-text133">
+                <a href="{{ url_for('contratista.contratistaV1', nombre=contratista['nombre'] , cedula=contratista['cedula']) }}" id="misContratosButton" class="home-button button">
+                    Volver
+                </a>
+                </span>
+
+
           </div>
           <div class="home-mainright">
             <img
@@ -211,3 +217,12 @@
     </div>
   </body>
 </html>
+
+
+
+<script>
+
+    function goBack() {
+    window.history.back();
+}
+</script>

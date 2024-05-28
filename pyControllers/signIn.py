@@ -1,14 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from dbConnection import connectDB
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
 
-def signin():
+@app.route('/signIn', methods=['GET', 'POST'])
+def iniciarSesion():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
         # SEGUN EL TIPO DE USUARIO, EL RENDER SERA DE CONTRATISTA V1 O AUDITOR V1
+
+        if not(email or password):
+            return render_template("signIn.html", alert_message="Debe llenar todos los campos")
+
+
         try:
             connection = connectDB()
             cursor = connection.cursor(dictionary=True)
@@ -29,15 +35,22 @@ def signin():
             cursor.close()
 
             if auditor:
-                return redirect(url_for(f'auditor.auditorV1', 
+                return redirect(url_for('auditor.auditorV1', 
                                         nombre=auditor["nombre"], cedula=auditor["cedula"]))
+
                 
             raise Exception
-        except Exception as e:
-            print("Error in Sign in: ",e)
-            return "User not found or incorrect password", 401
-        
 
+
+        except Exception as e:
+            print("Error in Sign in: ", e)
+
+            return render_template("signIn.html", alert_message="Datos Incorrectos")
+
+
+ 
+          
+        
 
     if request.method == 'GET':
         return render_template('signIn.html')

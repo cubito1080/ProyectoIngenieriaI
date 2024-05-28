@@ -125,33 +125,27 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
+      data-tag="font"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
@@ -176,8 +170,27 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
   </head>
   <body>
+
+  {% if alert_message %}
+    <script type="text/javascript">
+        Swal.fire({
+            title: 'Alerta!',
+            text: "{{ alert_message }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    {% endif %}
+
     <link
       href="{{ url_for('static', filename='css/contratista_sign_in_style.css') }}"
       rel="stylesheet"
@@ -189,7 +202,9 @@
       />
 
       <div class="home-container">
+
         {% include 'navbar.html' %}
+        
         <div id="main_content" class="home-content">
           <div id="left_content" class="home-leftsidecontent">
             <div class="home-container4">
@@ -232,49 +247,47 @@
                 <br />
               </span>
             </div>
-            <img
-              src="/static/images/woman_laptop.png"
-              alt="image"
-              class="home-image1"
-            />
-          </div>
-          <div id="right_content" class="home-rightsidecontent">
-            <div id="login_section" class="home-righside">
-              <form method="POST" class="home-container06">
-                <div id="mail_section" class="home-container5">
-                  <label id="email_label" for="email_input">Email</label>
-                  <input
-                    type="text"
-                    id="email_input"
-                    class="home-emailinputsection input"
-                    name="email"
-                    value="{{ request.form.email if request.form.email else '' }}"
-                  />
-                </div>
-                <div id="password_section" class="home-container6">
-                  <label id="password_label" for="password_input">Clave</label>
-                  <input
-                    type="password"
-                    id="password_input"
-                    class="home-passwordinputsection input"
-                    name="password"
-                    value="{{ request.form.password if request.form.password else '' }}"
-                  />
-                </div>
-                <div
-                  id="buttons_div_container"
-                  class="home-buttonsdivcontainer"
-                >
-                  <a href="{{ url_for('login') }}" id="register_button" class="home-button button">Register</a>
-                  <button type="submit" id="sign_in_button" class="home-button1 button">Sign in</button>
 
-                </div>
+            <img
+              id="image-logo_icon"
+              alt="image"
+              src="/static/images/_2c48de95-259e-4abb-99aa-8504265f4f92-200h.png"
+              class="home-image"/>          
+            <h1 style="font-size: 28px; margin-top: 10px; margin-bottom: 13px;">
+              <span>Iniciar sesión</span>
+            </h1>
+            <span style="font-size: 20px;">
+              ¡Juntos, haremos que la contratación sea más fácil y transparente!
+            </span>
+          </div>
+
+          <div class="home-rightside">
+            <form action="{{ url_for('signIn') }}" method="POST" style="width: 100%;">
+              <div id="mail_section" class="input-container" style="gap: 60px;">
+                <label id="email_label" for="email_input">Email:</label>
+                <input type="text" id="email_input" class="input-section input" name="email"
+                    value="{{ request.form.email if request.form.email else '' }}"/>
+              </div>
+              <div id="password_section" class="input-container" style="gap: 18px;">
+                <label id="password_label" for="password_input">Contraseña:</label>
+                <input type="password" id="password_input" class="input-section input" name="password"
+                    value="{{ request.form.password if request.form.password else '' }}"/>
+              </div>
+
+              <div id="buttons_div_container" class="button-section">
+                
+                <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">Iniciar sesión</button>
+                <a href="{{ url_for('logIn') }}" id="register_button" class="home-button button">Crear cuenta</a>
+                
+              </div>
+
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
 

@@ -176,6 +176,7 @@
               id="estadosDelContrato_{{ contrato.id }}"
               class="home-estados-del-contrato"
             >
+
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_{{ contrato.id }}" class="home-contrato">
                   <span id="contrato" class="home-text12">{{ contrato["metodo_pago"] }}</span>
@@ -192,7 +193,7 @@
               </div>
               <div class="home-estado-imagen-div">
                 <img
-                  src="/static/images/descarga-removebg-preview%20(1)%2036-200h.png"
+                  src="/static/images/en espera.png"
                   alt="img"
                   class="home-image1"/>
               </div>
@@ -200,16 +201,24 @@
                 id="contenedorBotonBuscar"
                 class="home-contenedor-boton-buscar"
               >
-              <a href="{{ url_for('auditor.auditorV3', cedula=contrato['cedula_auditor'], cedulaContratista=contrato['cedula_contratista'] ) }}">
+              <a href="{{ url_for('auditor.auditorV3', contrato_id=contrato['id'], documento_id=None ) }}">
                 <button type="button" class="home-botonlupa button">🔍</button>
               </a>
 
 
               </div>
             </div>
+
             {% endfor %}
             {% endif %}
+
+          <span class="home-text133">
+              <a href="{{ url_for('auditor.auditorV1', nombre=auditor['nombre'], cedula=auditor['cedula']) }}" id="misContratosButton" class="home-button button">Volver</a>
+                </span>
+
           </div>
+
+
           <div class="home-mainright">
               <div class="home-image2-container">
                   <div class="home-text-above-image">Mira el historial de contratos</div>
@@ -222,3 +231,10 @@
   </body>
 </html>
 
+
+<script>
+
+    function goBack() {
+    window.history.back();
+}
+</script>

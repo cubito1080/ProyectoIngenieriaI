@@ -146,10 +146,29 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
   </head>
   <body>
+
+    {% if alert_message %}
+    <script type="text/javascript">
+        Swal.fire({
+            title: 'Alerta!',
+            text: "{{ alert_message }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    {% endif %}
+
+
+
     <link
       href="{{ url_for('static', filename='css/styleLoginContratista.css') }}"
       rel="stylesheet"
@@ -170,19 +189,7 @@
             </span>
             <div class="home-container06">
               <form method="POST" class="home-container06">
-                <div id="email_container" class="home-container07">
-                  <label id="email_label" for="email_input" class="home-text12"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email_input"
-                    placeholder="example@gmail.com"
-                    class="home-textinput input"
-                    name="email"
-                    value="{{ request.form.email if request.form.email else '' }}"
-                  />
-                </div>
+
                 <div id="name_container" class="home-container08">
                   <label id="name_label" for="nombre_input" class="home-text13"
                     >Nombre</label
@@ -193,22 +200,6 @@
                     class="home-textinput1 input"
                     name="nombre"
                     value="{{ request.form.nombre if request.form.nombre else '' }}"
-                  />
-                </div>
-                <div id="password_container" class="home-container09">
-                  <label
-                    id="password_label"
-                    for="password_input"
-                    class="home-text14"
-                    >Contraseña</label
-                  >
-                  <input
-                    type="password"
-                    id="password_input"
-                    placeholder="*********"
-                    class="home-textinput2 input"
-                    name="password"
-                    value="{{ request.form.password if request.form.password else '' }}"
                   />
                 </div>
                 <div id="apellido_container" class="home-container10">
@@ -225,7 +216,25 @@
                     name="apellido"
                     value="{{ request.form.apellido if request.form.apellido else '' }}"
                   />
+
                 </div>
+
+
+                  <div id="email_container" class="home-container07">
+                  <label id="email_label" for="email_input" class="home-text12"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email_input"
+                    placeholder="example@gmail.com"
+                    class="home-textinput input"
+                    name="email"
+                    value="{{ request.form.email if request.form.email else '' }}"
+                  />
+                </div>
+
+
                 <div id="cedula_container" class="home-container11">
                   <label
                     id="cedula_label"
@@ -254,6 +263,40 @@
                     class="home-textinput5 input"
                     name="telefono"
                     value="{{ request.form.telefono if request.form.telefono else '' }}"
+                  />
+                </div>
+
+                  <div id="password_container" class="home-container09">
+                  <label
+                    id="password_label"
+                    for="password_input"
+                    class="home-text14"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="password_input"
+                    placeholder="*********"
+                    class="home-textinput2 input"
+                    name="password"
+                    value="{{ request.form.password if request.form.password else '' }}"
+                  />
+                </div>
+
+                  <div id="password_container" class="home-container09">
+                  <label
+                    id="password_label_"
+                    for="password_input_"
+                    class="home-text14"
+                    >Confirmar contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="password_input_"
+                    placeholder="*********"
+                    class="home-textinput2 input"
+                    name="password_"
+                    value="{{ request.form.password if request.form.password else '' }}"
                   />
                 </div>
 
