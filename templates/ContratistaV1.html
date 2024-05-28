@@ -82,33 +82,7 @@
         href="{{ url_for('static', filename='css/V1.css') }}"
         rel="stylesheet"/>
       <div class="home-container">
-        <div id="nav_bar" class="home-navbar">
-          <div id="left-sde-nav" class="home-container01">
-            <img
-              alt="image"
-              src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/357a4804-f777-4f67-833d-8570a139c209/d2cfbc5f-3e54-4039-8d3c-5b0b0d9409fc?org_if_sml=14445&amp;force_format=original"
-              class="home-image"
-            />
-          </div>
-          <div id="righ-side-nav" class="home-container02">
-            <div id="links_container" class="home-container03">
-              <span id="home_link" class="home-text">
-                <span>Home</span>
-                <br />
-              </span>
-              <span id="features_link" class="home-text03">Features</span>
-              <span id="case_studies_link" class="home-text04">
-                Case Studies
-              </span>
-              <span id="pricing_link" class="home-text05">Pricing</span>
-              <span id="faq_link" class="home-text06">FAQ</span>
-              <span id="contact_link" class="home-text07">
-                <span>Contact US</span>
-                <br />
-              </span>
-            </div>
-          </div>
-        </div>
+        {% include 'navbar.html' %}
         <div class="home-main">
           <div class="home-mainleft">
             <img alt="image" src="/static/images/group%20135-800w.png" class="home-image1"/>
