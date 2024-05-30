@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - Auditor</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -165,31 +165,25 @@
 
         <div class="home-main">
           <div class="home-mainleft">
-            <span class="home-text10">Contratos</span>
+            <span class="home-title">Contratos</span>
             <div class="home-nombre-div">
-              <span class="home-text11">
-                Bienvenido otra vez, señor auditor
+              <span class="home-subtitle">
+                ¡Bienvenido, {{ auditor["nombre"] }}!
               </span>
             </div>
             {% if contratos %}
             {% for contrato in contratos %}
-            <div
-              id="estadosDelContrato_{{ contrato.id }}"
-              class="home-estados-del-contrato"
-            >
-
+            <div class="home-estados-del-contrato">
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_{{ contrato.id }}" class="home-contrato">
-                  <span id="contrato" class="home-text12">{{ contrato["metodo_pago"] }}</span>
+                  <span id="contrato" class="home-text">{{ contrato["metodo_pago"].capitalize() }}</span>
                 </div>
                 <div id="fechaDIV_{{ contrato.id }}" class="home-fecha">
-                  <span id="fecha" class="home-text13"
-                    >{{ contrato["fecha_inicio"] }}</span
-                  >
+                  <span id="fecha" class="home-text">{{ contrato["fecha_inicio"] }}</span>
                 </div>
                 <div id="EstadoDIV_{{ contrato.id }}" class="home-estado">
-                  <span id="estado" class="home-text14"
-                    >{{ contrato["estado"].pop() }}</span>
+                  <span id="estado" class="home-text"
+                    >{{ contrato["estado"].pop().capitalize() }}</span>
                 </div>
               </div>
               <div class="home-estado-imagen-div">

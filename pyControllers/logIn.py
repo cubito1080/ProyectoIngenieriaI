@@ -8,7 +8,6 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 def registrarse():
     if request.method == 'POST':
         #manejar post, al hundirse el boton "registrarse" habra que hacer exepciones y redigir al sign in o home
-
         try:
             email = request.form.get('email')
             nombre = request.form.get('nombre')

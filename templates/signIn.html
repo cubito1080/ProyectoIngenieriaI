@@ -202,10 +202,6 @@
       />
 
       <div class="home-container">
-
-          {% include 'navbar.html' %}
-
-
         <div class="container">
           <div style="padding-right: 5%;">
             <img
@@ -235,10 +231,12 @@
               </div>
 
               <div id="buttons_div_container" class="button-section">
-                
-                <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">Iniciar sesión</button>
-                <a href="{{ url_for('logIn') }}" id="register_button" class="home-button button">Crear cuenta</a>
-                
+                <a href="{{ url_for('logIn') }}" id="register_button" class="home-button button">
+                  Crear cuenta
+                </a>
+                <button type="submit" id="sign_in_button" class="home-button button" style="background-color: #009688;">
+                  Iniciar sesión
+                </button>
               </div>
 
               </form>

@@ -23,19 +23,17 @@
   background-color: #004466;
 }
 .home-container01 {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
+  width: auto;
+  display: inline-block;
   max-height: auto;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  margin-right: var(--dl-space-space-unit);
 }
 .home-image {
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-medium);
   object-fit: cover;
-  padding-left: var(--dl-space-space-twounits);
 }
 .home-container02 {
   gap: 40px;
@@ -52,7 +50,8 @@
   border: none;
   padding: 10px 20px;
   transition: 0.3s;
-  font-family: "auto";
+  font-family: Inter, sans-serif;
+  font-weight: 600;
   border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 87, 34);
@@ -68,11 +67,10 @@
   height: 100%;
   display: flex;
   align-items: center;
-  margin-left: 0px;
   justify-content: space-around;
 }
 .home-container04 {
-  gap: var(--dl-space-space-sixunits);
+  gap: var(--dl-space-space-fiveunits);
   flex: 0 0 auto;
   width: auto;
   height: auto;
@@ -85,7 +83,7 @@
   padding: 14px 16px;
   font-size: 20px;
   transition: 0.3s;
-  font-family: "Roboto";
+  font-family: "Inter", "sans-serif";
   text-decoration: none;
 }
 .home-link:hover {
@@ -133,7 +131,7 @@
   color: #000000;
   font-size: 20px;
   text-align: left;
-  font-family: "Roboto";
+  font-family: "Inter", "sans-serif";
   border-color: var(--dl-color-gray-black);
   border-width: 0px;
 }

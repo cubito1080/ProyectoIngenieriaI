@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SAC - Log In</title>
+    <title>SAC - Registro</title>
     <meta property="og:title" content="Imaginary Whimsical Butterfly" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -57,7 +57,7 @@
       [type="button"],
       [type="reset"],
       [type="submit"] {
-        -webkit-appearance: button;
+        -appearance: button;
       }
       button::-moz-focus-inner,
       [type="button"]::-moz-focus-inner,
@@ -146,190 +146,140 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
-
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"/>
+    <link
+      href="{{ url_for('static', filename='css/styleLoginContratista.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='css/indexLoginContratista.css') }}"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
   </head>
   <body>
-
     {% if alert_message %}
     <script type="text/javascript">
         Swal.fire({
-            title: 'Alerta!',
+            title: '¡Alerta!',
             text: "{{ alert_message }}",
             icon: 'error',
             confirmButtonText: 'OK'
         });
     </script>
     {% endif %}
-
-
-
-    <link
-      href="{{ url_for('static', filename='css/styleLoginContratista.css') }}"
-      rel="stylesheet"
-    />
-    <div>
-      <link
-        href="{{ url_for('static', filename='css/indexLoginContratista.css') }}"
-        rel="stylesheet"
-      />
-
-      <div class="home-container">
-
-          {% include 'navbar.html' %}
-
-        <div class="home-container04">
-          <div id="left_side" class="home-container05">
-            <span class="home-text10">Registrate</span>
-            <span class="home-text11">
-              Bienvenido a nuestra comunidad, por favor ingrese sus datos.
-            </span>
-            <div class="home-container06">
-              <form method="POST" class="home-container06">
-
-                <div id="name_container" class="home-container08">
-                  <label id="name_label" for="nombre_input" class="home-text13"
-                    >Nombre</label
-                  >
-                  <input
-                    type="text"
-                    id="nombre_input"
-                    class="home-textinput1 input"
+    <div class="home-container">
+      <div class="home-container04">
+        <div id="left_side" class="home-container05">
+          <span class="home-title" style="padding-inline-start: var(--dl-space-space-threeunits);">
+            Regístrate
+          </span>
+          <span class="home-subtitle" style="padding-inline-start: var(--dl-space-space-threeunits);">
+            Bienvenido a nuestra comunidad, por favor ingrese sus datos.
+          </span>
+          <div style="padding: var(--dl-space-space-threeunits);">
+            <form method="POST">
+              <div class="home-container06">
+                <div id="name_container" class="home-input-container">
+                  <label id="name_label" for="nombre_input" class="home-text">
+                    Nombre
+                  </label>
+                  <input type="text" id="nombre_input"
+                    class="home-input input"
                     name="nombre"
-                    value="{{ request.form.nombre if request.form.nombre else '' }}"
-                  />
+                    value="{{ request.form.nombre if request.form.nombre else '' }}"/>
                 </div>
-                <div id="apellido_container" class="home-container10">
-                  <label
-                    id="apellido_label"
-                    for="apellido_input"
-                    class="home-text15"
-                    >Apellido</label
-                  >
-                  <input
-                    type="text"
-                    id="apellido_input"
-                    class="home-textinput3 input"
+                <div id="apellido_container" class="home-input-container">
+                  <label id="apellido_label" for="apellido_input" class="home-text">
+                    Apellido
+                  </label>
+                  <input type="text" id="apellido_input"
+                    class="home-input input"
                     name="apellido"
-                    value="{{ request.form.apellido if request.form.apellido else '' }}"
-                  />
-
+                    value="{{ request.form.apellido if request.form.apellido else '' }}"/>
                 </div>
-
-
-                  <div id="email_container" class="home-container07">
-                  <label id="email_label" for="email_input" class="home-text12"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email_input"
-                    placeholder="example@gmail.com"
-                    class="home-textinput input"
-                    name="email"
-                    value="{{ request.form.email if request.form.email else '' }}"
-                  />
-                </div>
-
-
-                <div id="cedula_container" class="home-container11">
-                  <label
-                    id="cedula_label"
-                    class="home-text16"
-                    for="cedula_input"
-                    >Cédula</label
-                  >
+                <div id="cedula_container" class="home-input-container">
+                  <label id="cedula_label" class="home-text" for="cedula_input">
+                    Cédula
+                  </label>
                   <input
                     type="text"
                     id="cedula_input"
-                    class="home-textinput4 input"
+                    class="home-input input"
                     name="cedula"
                     value="{{ request.form.cedula if request.form.cedula else '' }}"
                   />
                 </div>
-                <div id="telefonoo_container" class="home-container12">
-                  <label
-                    id="telefono_label"
-                    for="telefono_input"
-                    class="home-text17"
-                    >Teléfono</label
-                  >
+                <div id="telefonoo_container" class="home-input-container">
+                  <label for="telefono_input" class="home-text">
+                    Teléfono
+                  </label>
                   <input
                     type="number"
                     id="telefono_input"
-                    class="home-textinput5 input"
+                    class="home-input input"
                     name="telefono"
-                    value="{{ request.form.telefono if request.form.telefono else '' }}"
-                  />
+                    value="{{ request.form.telefono if request.form.telefono else '' }}"/>
                 </div>
-
-                  <div id="password_container" class="home-container09">
-                  <label
-                    id="password_label"
-                    for="password_input"
-                    class="home-text14"
-                    >Contraseña</label
-                  >
+                <div id="email_container" class="home-input-container">
+                  <label id="email_label" for="email_input" class="home-text">Email</label>
+                  <input type="email" id="email_input"
+                    placeholder="example@gmail.com"
+                    class="home-input input"
+                    name="email"
+                    value="{{ request.form.email if request.form.email else '' }}"/>
+                </div>
+                <div id="password_container" class="home-input-container">
+                  <label id="password_label" for="password_input" class="home-text">
+                    Contraseña
+                  </label>
                   <input
                     type="password"
                     id="password_input"
                     placeholder="*********"
-                    class="home-textinput2 input"
+                    class="home-input input"
                     name="password"
-                    value="{{ request.form.password if request.form.password else '' }}"
-                  />
+                    value="{{ request.form.password if request.form.password else '' }}"/>
                 </div>
-
-                  <div id="password_container" class="home-container09">
+                <div id="password_container" class="home-input-container">
                   <label
                     id="password_label_"
                     for="password_input_"
-                    class="home-text14"
+                    class="home-text"
                     >Confirmar contraseña</label
                   >
                   <input
                     type="password"
                     id="password_input_"
                     placeholder="*********"
-                    class="home-textinput2 input"
+                    class="home-input input"
                     name="password_"
                     value="{{ request.form.password if request.form.password else '' }}"
                   />
                 </div>
-
-                <div class="home-container13">
-                  <button type="submit" class="home-button1 button" onclick="validarCorreo()">
-                    Registrarse
-                  </button>
-                  <a href="{{ url_for('home') }}" class="home-button button">Volver</a>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="home-container13">
+                <a href="{{ url_for('home') }}" class="home-button button">Volver</a>
+                <button type="submit" class="home-button1 button" onclick="validarCorreo()">
+                  Registrarse
+                </button>
+              </div>
+            </form>
           </div>
-          <div class="home-container14">
-            <span class="home-text23">Unete!</span>
-            <img
-              alt="image"
-              src="/static/images/man1-200w-200w.png"
-              class="home-image1"
-            />
-          </div>
+        </div>
+        <div class="home-container14">
+          <span class="home-subtitle">Unete!</span>
+          <img alt="image" src="/static/images/man1-200w-200w.png" class="home-image1"/>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
 
 
 <script>
     function validarCorreo(){
-        console.log("entra")
         var correo = document.getElementById('emailinput').value;
         var correoValido = /^[a-zA-Z0-9.-]+@(gmail|hotmail).com$/;
         if (!correoValido.test(correo)){

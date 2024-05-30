@@ -59,21 +59,19 @@
 
 /* En tu archivo style.css */
 
-
-
 .home-text {
-  padding: 14px 16px;
+  font-size: 15px;
+  font-family: Inter, sans-serif;
+}
+.home-title{
+  font-size: 30px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+}
+.home-subtitle{
   font-size: 20px;
-  transition: 0.3s;
-  font-family: "Roboto", sans-serif;
-  text-decoration: none;
-}
-.home-text:hover {
-  background: #003355;
-  border-radius: 15px;
-}
-.home-text:active {
-  background-attachment: #009688;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
 }
 .home-text03 {
   padding: 14px 16px;
@@ -146,26 +144,25 @@
   background-attachment: #009688;
 }
 .home-main {
+  margin-top: 5%;
   flex: 0 0 auto;
   width: 100%;
   height: auto;
   display: flex;
-  margin-top: var(--dl-space-space-threeunits);
   align-items: flex-start;
   justify-items: center;
   justify-content: center;
-  flex-direction: row;
 }
 .home-mainleft {
-  gap: var(--dl-space-space-threeunits);
-  flex: 1;
+  gap: var(--dl-space-space-twounits);
+  flex: 0.9;
   width: auto;
   height: auto;
   display: flex;
   flex-basis: column;
   align-items: flex-start;
   padding-top: var(--dl-space-space-unit);
-  padding-left: 200px;
+  padding-left: 100px;
   flex-direction: column;
   padding-bottom: var(--dl-space-space-twounits);
   justify-content: center;
@@ -195,7 +192,8 @@
   gap: var(--dl-space-space-fourunits);
   flex: 0 0 auto;
   color: white;
-  width: 90%;
+  width: 670px;
+  max-width: 670px;
   height: auto;
   display: flex;
   align-items: flex-start;
@@ -290,14 +288,14 @@
   transition: 0.3s;
   font-family: "auto", sans-serif;
   border-radius: 5px;
-  border-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: var(--dl-space-space-halfunit) var(--dl-space-space-fourunits);
   background-color: #009688;
 }
 .home-button:hover {
   transform: translateY(-7px);
   background: #E64A19;
-  border-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -307,13 +305,8 @@
   width: 100%;
   height: auto;
   display: flex;
-  align-items: center;
   flex-direction: row;
   padding: var(--dl-space-space-twounits);
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 200px;
-  margin-top: 100px;
 
 }
 .home-image2 {
@@ -323,12 +316,6 @@
 @media(max-width: 1600px) {
   .home-container3 {
     gap: 70px;
-  }
-  .home-main {
-    padding-top: var(--dl-space-space-threeunits);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
   }
   .home-mainleft {
     gap: var(--dl-space-space-threeunits);

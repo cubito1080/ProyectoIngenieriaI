@@ -251,11 +251,11 @@
 
 .home-button {
   color: rgb(255, 255, 255);
-  font-size: 14px;
   border: none;
   padding: 10px 20px;
   transition: 0.3s;
-  font-family: "auto";
+  font-family: Inter, "sans-serif";
+  font-weight: 500;
   border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 87, 34);

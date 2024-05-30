@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vague Lined Toad</title>
+    <title>SAC - Contratista</title>
     <meta property="og:title" content="Vague Lined Toad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -58,6 +58,7 @@
       [type="reset"],
       [type="submit"] {
         -webkit-appearance: button;
+        appearance: button;
       }
       button::-moz-focus-inner,
       [type="button"]::-moz-focus-inner,
@@ -165,22 +166,22 @@
 
         <div class="home-main">
           <div class="home-mainleft">
-            <span class="home-text10">Mis Contratos</span>
+            <span class="home-title">Mis Contratos</span>
             <div class="home-nombre-div">
-              <span class="home-text11">Usuario: {{ contratista["nombre"] or 'pedro' }}</span>
+              <span class="home-subtitle">¡Bienvenido, {{ contratista["nombre"] }}!</span>
             </div>
             {% for contrato in contratos %}
             <div id="estadosDelContrato_n" class="home-estados-del-contrato">
               <div id="contratoTextos" class="home-contrato-div">
                 <div id="contratoDIV_n" class="home-contrato">
-                  <span id="contrato" class="home-text12"> {{ contrato["metodo_pago"] }} </span>
+                  <span id="contrato" class="home-text" style="font-weight: 600;"> {{ contrato["metodo_pago"].capitalize() }} </span>
                 </div>
                 <div id="fechaDIV_n" class="home-fecha">
-                  <span id="fecha" class="home-text13">
+                  <span id="fecha" class="home-text">
                     {{ contrato["fecha_inicio"] }}</span>
                 </div>
                 <div id="EstadoDIV_n" class="home-estado">
-                  <span id="estado" class="home-text14">{{ contrato["estado"].pop() }}</span>
+                  <span id="estado" class="home-text">{{ contrato["estado"].pop().capitalize() }}</span>
         <!-- el tipo de contrato["estado"] es set, y como solo tiene un elemento se debe hacer  .pop()  -->
                 </div>
               </div>

@@ -12,18 +12,14 @@ auditor_blueprint = Blueprint('auditor', __name__)
 
 
 @auditor_blueprint.route('/auditorV4/<nombre>/<cedula>',methods=['GET', 'POST'])
-
 def auditorV4(nombre, cedula):
     connection = connectDB()
-
     cursor = connection.cursor(dictionary=True)
     get_query = (
         "SELECT cedula FROM contratista"
     )
-
     cursor.execute(get_query)
     cedulas = cursor.fetchall()
-
     if request.method == 'POST':
         nombre_ = request.form.get('nombre_')
         tipo_contrato = request.form.get('tipo_contrato')
@@ -35,10 +31,7 @@ def auditorV4(nombre, cedula):
         bancaria = request.form.get('bancaria')
         fecha_fin = request.form.get('fecha_fin')
         servicio = request.form.get('servicio')
-
         try:
-
-
             insert_query = (
                 "INSERT INTO contrato "
                 "(fecha_inicio, fecha_culminacion, estado, cedula_contratista, "
@@ -66,17 +59,32 @@ def auditorV4(nombre, cedula):
                                     nombre=nombre, cedula=cedula))
         except mysql.connector.Error as e:
             print(e)
-            return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula},cedulas=cedulas)
+            return render_template('auditorV4.html', auditor={"nombre": nombre, "cedula":cedula},cedulas=cedulas)
 
     if request.method == 'GET':
-        return render_template('qqqq.html', auditor={"nombre": nombre, "cedula":cedula},cedulas=cedulas)
+        return render_template('auditorV4.html', auditor={"nombre": nombre, "cedula":cedula},cedulas=cedulas)
 
 
-@auditor_blueprint.route('/auditorV3/<contrato_id>', methods=['GET'])
+@auditor_blueprint.route('/auditorV3/<contrato_id>', methods=['GET', 'POST'])
 def auditorV3(contrato_id):
+    print(request.method)
+    if request.method == 'POST':
+        connection = connectDB()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            "UPDATE contrato SET estado='finalizado' WHERE id=%s", (contrato_id, ))
+        connection.commit()
+        cursor.close()
+        if cursor.rowcount == 1:
+            print("Contrato updated")
+        else:
+            print(cursor.rowcount)
+            print("Contrato update failed")
+        return render_template('AuditorV3.html', documentos=documentosContrato(contrato_id), 
+                                opciones=['en espera', 'aprobado', 'no aprobado'])
+
     if request.method == 'GET':
         documentos = documentosContrato(contrato_id)
-        print(documentos)
         return render_template('AuditorV3.html', documentos=documentos, 
                                 opciones=['en espera', 'aprobado', 'no aprobado'])
 
@@ -108,7 +116,6 @@ def formulario_nuevo_contrato():
 @auditor_blueprint.route('/ver_documento/<filename>')
 def ver_documento(filename):
     return send_from_directory('./documentos/', filename)
-
 
 
 @auditor_blueprint.route('/actualizar_estado/<documento_id>/<contrato_id>', methods=['POST'])
